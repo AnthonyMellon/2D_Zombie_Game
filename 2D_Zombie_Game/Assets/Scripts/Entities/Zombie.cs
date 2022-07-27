@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Zombie : Entity
 {
+    [Header("Path Finding")]
     public GameObject target;
 
     // Start is called before the first frame update

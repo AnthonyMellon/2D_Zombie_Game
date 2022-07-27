@@ -2,14 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerMovement : MonoBehaviour
+public class Player : Entity
 {
     [Header("Joysticks")]
     public Joystick joystickMovement;
     public Joystick joystickAim;
-    [Space]
-    [Header("Movement")]
-    public float moveSpeed = 10f;
 
     private float horizontalMovement = 0f;
     private float verticalMovement = 0f;
@@ -22,6 +19,11 @@ public class playerMovement : MonoBehaviour
     }
 
     private void FixedUpdate()
+    {
+        Move();
+    }
+
+    public override void Move()
     {
         transform.Translate(new Vector3(horizontalMovement, verticalMovement, 0));
     }
