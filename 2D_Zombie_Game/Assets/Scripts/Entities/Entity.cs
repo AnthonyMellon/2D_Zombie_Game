@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
+    public float moveSpeed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,7 +15,7 @@ public class Entity : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public virtual void Move()

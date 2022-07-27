@@ -503,7 +503,6 @@ GameObject:
   - component: {fileID: 737996909}
   - component: {fileID: 737996910}
   - component: {fileID: 737996911}
-  - component: {fileID: 737996912}
   m_Layer: 0
   m_Name: PlayerSprite
   m_TagString: Untagged
@@ -588,33 +587,12 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!50 &737996912
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 737996908}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &1005107070
 GameObject:
   m_ObjectHideFlags: 0
@@ -662,7 +640,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joystickMovement: {fileID: 1449204015}
   joystickAim: {fileID: 1766055888}
-  moveSpeed: 0.1
+  moveSpeed: 0.01
 --- !u!1 &1262590641
 GameObject:
   m_ObjectHideFlags: 0
@@ -818,7 +796,6 @@ GameObject:
   - component: {fileID: 1645923944}
   - component: {fileID: 1645923945}
   - component: {fileID: 1645923946}
-  - component: {fileID: 1645923947}
   m_Layer: 0
   m_Name: ZombieSprite
   m_TagString: Untagged
@@ -919,27 +896,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!50 &1645923947
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1645923943}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &1656077973
 GameObject:
   m_ObjectHideFlags: 0
@@ -949,6 +905,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1656077974}
+  - component: {fileID: 1656077975}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Untagged
@@ -972,6 +929,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1656077975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656077973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 018141b45e3988f47b646ce8cbede3a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1005107070}
 --- !u!114 &1766055888 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2929252283123773951, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
