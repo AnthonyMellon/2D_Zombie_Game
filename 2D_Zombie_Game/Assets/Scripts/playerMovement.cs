@@ -18,8 +18,11 @@ public class playerMovement : MonoBehaviour
     void Update()
     {
         horizontalMovement = joystickMovement.Horizontal * moveSpeed;
-        verticalMovement = joystickMovement.Vertical * moveSpeed;
+        verticalMovement = joystickMovement.Vertical * moveSpeed;        
+    }
 
+    private void FixedUpdate()
+    {
         transform.Translate(new Vector3(horizontalMovement, verticalMovement, 0));
     }
 }
