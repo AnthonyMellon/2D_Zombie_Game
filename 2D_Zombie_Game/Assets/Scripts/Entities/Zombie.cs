@@ -29,7 +29,6 @@ public class Zombie : Entity
         float distX = targetPosition.x - currentPosition.x;
         float distY = targetPosition.y - currentPosition.y;
         float theta = Mathf.Atan2(distY, distX) * (180/Mathf.PI);
-        Debug.Log(theta);
         transform.rotation = Quaternion.Euler(0, 0, theta);
        
         //Move towards the target
