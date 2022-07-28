@@ -34,9 +34,10 @@ public class Weapon : MonoBehaviour
     void Update()
     {
         //Shoot when the joystick is moved outside the deadzone, and if the player as ammo to shoot
-        if(Mathf.Abs(weaponJoystick.Horizontal) > joystickDeadZone || Mathf.Abs(weaponJoystick.Vertical) > joystickDeadZone)
+        Debug.DrawRay(transform.parent.position, new Vector2(weaponJoystick.Horizontal, weaponJoystick.Vertical) * range, Color.yellow);
+        if (Mathf.Abs(weaponJoystick.Horizontal) > joystickDeadZone || Mathf.Abs(weaponJoystick.Vertical) > joystickDeadZone)
         {
-            if (ammoInMag > 0 && roundLoaded) shoot(weaponJoystick.Horizontal, weaponJoystick.Vertical);
+            if (ammoInMag > 0 && roundLoaded) shoot(weaponJoystick.Vertical, weaponJoystick.Horizontal);
         } 
         
         //Manual reload
@@ -51,8 +52,7 @@ public class Weapon : MonoBehaviour
 
     private void shoot(float vert, float horiz)
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.parent.position, new Vector2(vert, horiz), range);
-        Debug.DrawRay(transform.parent.position, new Vector2(vert, horiz) * range, Color.red);
+        RaycastHit2D hit = Physics2D.Raycast(transform.parent.position, new Vector2(horiz, vert), range);        
 
         if(hit)
         {
