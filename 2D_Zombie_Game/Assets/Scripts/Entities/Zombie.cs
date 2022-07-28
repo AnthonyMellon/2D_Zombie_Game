@@ -6,19 +6,14 @@ public class Zombie : Entity
 {
     [Header("Path Finding")]
     public GameObject target;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public bool enableAI;
 
     private void FixedUpdate()
     {
-        Move();
+        if (enableAI) Move();       
     }
 
-    public override void Move()
+    private void Move()
     {
         //Face in the direction of the target 
         Vector3 currentPosition = transform.position;
@@ -33,5 +28,11 @@ public class Zombie : Entity
        
         //Move towards the target
         transform.Translate(moveSpeed, 0, 0);
+    }
+
+    protected override void Die()
+    {
+        base.Die();
+        GameObject.Destroy(gameObject);
     }
 }

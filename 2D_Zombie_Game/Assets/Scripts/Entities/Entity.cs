@@ -4,23 +4,29 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
+    public float maxHealth;
+    public float currentHealth;
+
     [Header("Movement")]
     public float moveSpeed;
 
-    // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
-        
+        currentHealth = maxHealth;
     }
 
-    // Update is called once per frame
-    void Update()
+    protected void Update()
     {
-
+        if (currentHealth <= 0) Die();
     }
 
-    public virtual void Move()
+    public void damage(float damageValue)
     {
+        currentHealth -= damageValue;
+    }
 
+    protected virtual void Die()
+    {
+        Debug.Log($"{transform.name} died!");
     }
 }

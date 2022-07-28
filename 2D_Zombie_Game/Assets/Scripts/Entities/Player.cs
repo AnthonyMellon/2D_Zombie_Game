@@ -23,7 +23,7 @@ public class Player : Entity
         Move();
     }
 
-    public override void Move()
+    private void Move()
     {
         transform.Translate(new Vector3(horizontalMovement, verticalMovement, 0));
     }

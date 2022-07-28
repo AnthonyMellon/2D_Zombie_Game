@@ -56,7 +56,11 @@ public class Weapon : MonoBehaviour
 
         if(hit)
         {
-            Debug.Log(hit.transform.name);
+            if(hit.transform.parent.transform.tag == "Zombie")
+            {
+                Zombie hitScript = hit.transform.parent.transform.GetComponent<Zombie>();
+                hitScript.damage(damage);
+            }
         }
 
         StartCoroutine(cycleRound());
