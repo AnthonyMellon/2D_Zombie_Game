@@ -477,6 +477,7 @@ MonoBehaviour:
   reloadSpeed: 1
   ammoInMag: 0
   roundLoaded: 1
+  reloading: 0
 --- !u!1 &711375390
 GameObject:
   m_ObjectHideFlags: 0
@@ -995,7 +996,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 018141b45e3988f47b646ce8cbede3a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.08
+  moveSpeed: 0.05
   target: {fileID: 1005107070}
 --- !u!114 &1766055888 stripped
 MonoBehaviour:

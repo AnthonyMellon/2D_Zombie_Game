@@ -36,7 +36,7 @@ public class Weapon : MonoBehaviour
         //Shoot when the joystick is moved outside the deadzone, and if the player as ammo to shoot
         if(Mathf.Abs(weaponJoystick.Horizontal) > joystickDeadZone || Mathf.Abs(weaponJoystick.Vertical) > joystickDeadZone)
         {
-            if (ammoInMag > 0 && roundLoaded) shoot();
+            if (ammoInMag > 0 && roundLoaded) shoot(weaponJoystick.Horizontal, weaponJoystick.Vertical);
         } 
         
         //Manual reload
@@ -49,8 +49,16 @@ public class Weapon : MonoBehaviour
         }
     }    
 
-    private void shoot()
+    private void shoot(float vert, float horiz)
     {
+        RaycastHit2D hit = Physics2D.Raycast(transform.parent.position, new Vector2(vert, horiz), range);
+        Debug.DrawRay(transform.parent.position, new Vector2(vert, horiz) * range, Color.red);
+
+        if(hit)
+        {
+            Debug.Log(hit.transform.name);
+        }
+
         StartCoroutine(cycleRound());
 
         //Automatic reload
