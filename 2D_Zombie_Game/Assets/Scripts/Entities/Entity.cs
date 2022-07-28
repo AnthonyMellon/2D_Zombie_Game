@@ -20,7 +20,7 @@ public class Entity : MonoBehaviour
         if (currentHealth <= 0) Die();
     }
 
-    public void damage(float damageValue)
+    public void Damage(float damageValue)
     {
         currentHealth -= damageValue;
     }

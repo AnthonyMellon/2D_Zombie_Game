@@ -12,8 +12,9 @@ public class Player : Entity
     private float verticalMovement = 0f;
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
+        base.Update();
         horizontalMovement = joystickMovement.Horizontal * moveSpeed;
         verticalMovement = joystickMovement.Vertical * moveSpeed;        
     }

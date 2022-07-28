@@ -35,4 +35,19 @@ public class Zombie : Entity
         base.Die();
         GameObject.Destroy(gameObject);
     }
+
+    public void Damage(float damageValue)
+    {
+        base.Damage(damageValue);
+        StartCoroutine(DamageAnim());
+
+    }
+
+    private IEnumerator DamageAnim()
+    {
+        //Temp Damage animation for debug
+        transform.Find("ZombieSprite").GetComponent<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSeconds(.1f);
+        transform.Find("ZombieSprite").GetComponent<SpriteRenderer>().color = Color.white;
+    }
 }

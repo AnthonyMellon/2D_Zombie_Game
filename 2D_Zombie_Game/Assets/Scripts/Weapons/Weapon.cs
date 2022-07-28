@@ -59,7 +59,7 @@ public class Weapon : MonoBehaviour
             if(hit.transform.parent.transform.tag == "Zombie")
             {
                 Zombie hitScript = hit.transform.parent.transform.GetComponent<Zombie>();
-                hitScript.damage(damage);
+                hitScript.Damage(damage);
             }
         }
 
