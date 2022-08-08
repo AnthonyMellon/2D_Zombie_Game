@@ -187,6 +187,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1005107070}
+    - target: {fileID: 4677760025093688487, guid: fd981f50a64816d40ac0708fb14051fc, type: 3}
+      propertyPath: enableAI
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd981f50a64816d40ac0708fb14051fc, type: 3}
 --- !u!4 &383502483 stripped
@@ -253,6 +257,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1005107070}
+    - target: {fileID: 4677760025093688487, guid: fd981f50a64816d40ac0708fb14051fc, type: 3}
+      propertyPath: enableAI
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd981f50a64816d40ac0708fb14051fc, type: 3}
 --- !u!1001 &458038618
@@ -1047,6 +1055,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1005107070}
+    - target: {fileID: 4677760025093688487, guid: fd981f50a64816d40ac0708fb14051fc, type: 3}
+      propertyPath: enableAI
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd981f50a64816d40ac0708fb14051fc, type: 3}
 --- !u!114 &1766055888 stripped
@@ -1118,7 +1130,7 @@ Transform:
   m_GameObject: {fileID: 1926551349}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 25, y: 15, z: 1}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1858657412}
@@ -1165,7 +1177,7 @@ SpriteRenderer:
   m_SortingLayerID: -1937173803
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c2ec19fc519b3674cb806f278d3deaed, type: 3}
   m_Color: {r: 0.1981132, g: 0.1981132, b: 0.1981132, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1235,5 +1247,9 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1005107070}
+    - target: {fileID: 4677760025093688487, guid: fd981f50a64816d40ac0708fb14051fc, type: 3}
+      propertyPath: enableAI
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd981f50a64816d40ac0708fb14051fc, type: 3}
