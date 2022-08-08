@@ -17,6 +17,8 @@ public class Player : Entity
     {
         currentHealth = maxHealth;
         rb = transform.Find("PlayerSprite").GetComponent<Rigidbody2D>();
+        pathGrid grid = new pathGrid(10, 18, 1, new Vector2(0, 0));
+        grid.setup();
     }
 
     // Update is called once per frame
