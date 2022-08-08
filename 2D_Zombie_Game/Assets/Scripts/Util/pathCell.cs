@@ -5,7 +5,9 @@ using UnityEngine;
 public class pathCell
 {
     private Vector2Int absPos;
-    private Vector2 wrldPos;
+    public Vector2 wrldPos { get; private set; }
+
+    public Color col = Color.green;
 
     public bool walkable { get; private set; }
 
@@ -17,12 +19,13 @@ public class pathCell
 
     public void determineWalkability()
     {
-        RaycastHit2D hit = Physics2D.Raycast(wrldPos, Vector2.up, .1f);
+        RaycastHit2D hit = Physics2D.Raycast(wrldPos, Vector2.up, .1f);        
         walkable = true;
         if (hit && hit.transform.tag == "wall")
         {
             Debug.Log(hit.transform.name);
             walkable = false;
+            col = Color.red;
         }
     } 
 }

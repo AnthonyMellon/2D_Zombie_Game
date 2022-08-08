@@ -11,15 +11,7 @@ public class Player : Entity
     private float horizontalMovement = 0f;
     private float verticalMovement = 0f;
 
-    public Rigidbody2D rb;
-
-    private void Start()
-    {
-        currentHealth = maxHealth;
-        rb = transform.Find("PlayerSprite").GetComponent<Rigidbody2D>();
-        pathGrid grid = new pathGrid(10, 18, 1, new Vector2(0, 0));
-        grid.setup();
-    }
+    private pathGrid grid;
 
     // Update is called once per frame
     private void Update()

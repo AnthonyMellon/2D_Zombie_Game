@@ -9,9 +9,9 @@ public class pathGrid
     private float cellSize;
     private Vector2 origin;
 
-    private pathCell[,] cells;
+    public pathCell[,] cells { get; private set; }
 
-    public pathGrid(int numCellsX, int numCellsY, int cellSize, Vector2 origin)
+    public pathGrid(int numCellsX, int numCellsY, float cellSize, Vector2 origin)
     {
         this.numCellsX = numCellsX;
         this.numCellsY = numCellsY;
@@ -27,8 +27,8 @@ public class pathGrid
         {
             for(int y = 0; y < numCellsY; y++)
             {
-                float worldPosX = origin.x + (cellSize * x);
-                float worldPosY = origin.y + (cellSize * y);
+                float worldPosX = origin.x + (cellSize * (x - (numCellsX / 2)));
+                float worldPosY = origin.y + (cellSize * (y - (numCellsY / 2)));
 
                 cells[x, y] = new pathCell(x, y, worldPosX, worldPosY);
                 cells[x, y].determineWalkability();
