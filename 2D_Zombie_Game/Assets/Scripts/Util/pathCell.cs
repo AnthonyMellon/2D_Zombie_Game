@@ -19,7 +19,7 @@ public class pathCell
     {
         RaycastHit2D hit = Physics2D.Raycast(wrldPos, Vector2.up, .1f);
         walkable = true;
-        if (hit)
+        if (hit && hit.transform.tag == "wall")
         {
             Debug.Log(hit.transform.name);
             walkable = false;
