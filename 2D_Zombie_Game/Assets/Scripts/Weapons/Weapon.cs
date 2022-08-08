@@ -15,14 +15,14 @@ public class Weapon : MonoBehaviour
     [SerializeField] private float range;
     [Tooltip("Number of bullets fired per second")]
     [SerializeField] private float fireRate;
-    [SerializeField] private float magSize;
+    [SerializeField] public float magSize;
     [Tooltip("How many seconds it takes to reload")]
     [SerializeField] private float reloadSpeed;    
 
-    [Header("Debug")]
-    [SerializeField] private float ammoInMag;
+    [Header("Debug")]    
     [SerializeField] private bool roundLoaded = true;
     [SerializeField] private bool reloading = false;
+    [SerializeField] public float ammoInMag;
 
     // Start is called before the first frame update
     void Start()
