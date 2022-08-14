@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class pathGrid
 {
-    private int numCellsX;
-    private int numCellsY;
+    public int numCellsX { get; private set; }
+    public int numCellsY { get; private set; }
     private float cellSize;
     private Vector2 origin;
 

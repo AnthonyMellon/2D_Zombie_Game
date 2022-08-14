@@ -29,9 +29,9 @@ public class zombieManager : MonoBehaviour
                 for (int y = 0; y < pathFinder.grid.cells.GetLength(1); y++)
                 {
                     Gizmos.color = pathFinder.grid.cells[x, y].col;
-                    Gizmos.DrawSphere(pathFinder.grid.cells[x, y].wrldPos, .1f);
+                    Gizmos.DrawSphere(pathFinder.grid.cells[x, y].worldPos, .1f);
                     Gizmos.color = Color.grey;
-                    Gizmos.DrawWireCube(pathFinder.grid.cells[x, y].wrldPos, new Vector3(.5f, .5f, .1f));
+                    Gizmos.DrawWireCube(pathFinder.grid.cells[x, y].worldPos, new Vector3(.5f, .5f, .1f));
                 }
             }
         }

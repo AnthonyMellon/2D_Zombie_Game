@@ -43,13 +43,11 @@ public class Player : Entity
 
     private void Move()
     {
-        //transform.Translate(new Vector3(horizontalMovement, verticalMovement, 0));
         rb.velocity = new Vector2(horizontalMovement * moveSpeed, verticalMovement * moveSpeed);
     }
 
     private void updateHUD()
     {
-        Debug.Log(currentHealth);
         health.text = $"Health: {currentHealth}/{maxHealth}";
         ammo.text = $"Ammo: {currentWeapon.ammoInMag}/{currentWeapon.magSize}";
     }

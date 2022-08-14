@@ -186,7 +186,7 @@ PrefabInstance:
     - target: {fileID: 4677760025093688487, guid: fd981f50a64816d40ac0708fb14051fc, type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 1005107070}
+      objectReference: {fileID: 737996908}
     - target: {fileID: 4677760025093688487, guid: fd981f50a64816d40ac0708fb14051fc, type: 3}
       propertyPath: enableAI
       value: 1
@@ -391,7 +391,7 @@ PrefabInstance:
     - target: {fileID: 4677760025093688487, guid: fd981f50a64816d40ac0708fb14051fc, type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 1005107070}
+      objectReference: {fileID: 737996908}
     - target: {fileID: 4677760025093688487, guid: fd981f50a64816d40ac0708fb14051fc, type: 3}
       propertyPath: enableAI
       value: 1
@@ -758,13 +758,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 674070481}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1005107071}
-  m_RootOrder: 1
+  m_Father: {fileID: 737996909}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &674070483
 MonoBehaviour:
@@ -868,8 +868,9 @@ GameObject:
   - component: {fileID: 737996910}
   - component: {fileID: 737996911}
   - component: {fileID: 737996912}
+  - component: {fileID: 737996913}
   m_Layer: 0
-  m_Name: PlayerSprite
+  m_Name: PlayerPhys
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -882,13 +883,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 737996908}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1005107071}
-  m_RootOrder: 0
+  m_Children:
+  - {fileID: 674070482}
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &737996910
 SpriteRenderer:
@@ -979,6 +981,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &737996913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 737996908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1bfb238d31a89147802090bf42ac739, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  moveSpeed: 2
+  joystickMovement: {fileID: 1449204015}
+  joystickAim: {fileID: 1766055888}
+  health: {fileID: 2003039683}
+  ammo: {fileID: 327793951}
 --- !u!1 &976181532
 GameObject:
   m_ObjectHideFlags: 0
@@ -1045,59 +1066,6 @@ PolygonCollider2D:
       - {x: -3.6597497, y: -2.095345}
       - {x: -0.7931614, y: -2.0622814}
       - {x: -0.79776525, y: 0.25724155}
---- !u!1 &1005107070
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1005107071}
-  - component: {fileID: 1005107072}
-  m_Layer: 0
-  m_Name: Player
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1005107071
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1005107070}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 737996909}
-  - {fileID: 674070482}
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1005107072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1005107070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1bfb238d31a89147802090bf42ac739, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
-  moveSpeed: 0.1
-  joystickMovement: {fileID: 1449204015}
-  joystickAim: {fileID: 1766055888}
-  health: {fileID: 2003039683}
-  ammo: {fileID: 327793951}
 --- !u!4 &1105558629 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4677760025093688486, guid: fd981f50a64816d40ac0708fb14051fc, type: 3}
@@ -1254,7 +1222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ad151d526855dc4dac0f2cf0a27eddf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  showGrid: 0
+  showGrid: 1
 --- !u!1 &1338926973
 GameObject:
   m_ObjectHideFlags: 0
@@ -1496,7 +1464,7 @@ PrefabInstance:
     - target: {fileID: 4677760025093688487, guid: fd981f50a64816d40ac0708fb14051fc, type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 1005107070}
+      objectReference: {fileID: 737996908}
     - target: {fileID: 4677760025093688487, guid: fd981f50a64816d40ac0708fb14051fc, type: 3}
       propertyPath: enableAI
       value: 1
@@ -1887,7 +1855,7 @@ PrefabInstance:
     - target: {fileID: 4677760025093688487, guid: fd981f50a64816d40ac0708fb14051fc, type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 1005107070}
+      objectReference: {fileID: 737996908}
     - target: {fileID: 4677760025093688487, guid: fd981f50a64816d40ac0708fb14051fc, type: 3}
       propertyPath: enableAI
       value: 1
