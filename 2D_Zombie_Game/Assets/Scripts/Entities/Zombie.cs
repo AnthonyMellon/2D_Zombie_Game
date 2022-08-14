@@ -8,8 +8,10 @@ public class Zombie : Entity
     public GameObject target;
     public bool enableAI;
     public bool showPath;
+    public int pathFindDelay;
+    private int pathWait;
 
-    public zombieManager manager;
+    private zombieManager manager;
 
     [HideInInspector] public List<pathCell> path { get; private set; }
 
@@ -17,6 +19,7 @@ public class Zombie : Entity
     {
         base.Start();
         manager = transform.parent.GetComponent<zombieManager>();
+        pathWait = pathFindDelay;
     }
 
     private void FixedUpdate()
@@ -32,8 +35,6 @@ public class Zombie : Entity
         Vector3 currentPosition = transform.position;
         Vector3 targetPosition = target.transform.position;
 
-        Debug.DrawLine(currentPosition, targetPosition, Color.red);
-
         float distX = targetPosition.x - currentPosition.x;
         float distY = targetPosition.y - currentPosition.y;
         float theta = Mathf.Atan2(distY, distX) * (180/Mathf.PI);
@@ -45,9 +46,25 @@ public class Zombie : Entity
 
     private void getPath()
     {
-        Vector2Int myGridPos = manager.pathFinder.grid.worldPosToGridPos(transform.position);
-        Vector2Int targGridPos = manager.pathFinder.grid.worldPosToGridPos(target.transform.position);
-        path = manager.pathFinder.FindPath(myGridPos.x, myGridPos.y, targGridPos.x, targGridPos.y);
+        pathWait ++;
+
+        if(pathWait >= pathFindDelay)
+        {
+            Vector2Int myGridPos = manager.pathFinder.grid.worldPosToGridPos(transform.position);
+            Vector2Int targGridPos = manager.pathFinder.grid.worldPosToGridPos(target.transform.position);
+            path = manager.pathFinder.FindPath(myGridPos.x, myGridPos.y, targGridPos.x, targGridPos.y);            
+            pathWait = 0;            
+        }
+        if (showPath) drawPath();
+
+    }
+
+    private void drawPath()
+    {
+        for(int i = 1; i < path.Count; i++)
+        {
+            Debug.DrawLine(path[i - 1].worldPos, path[i].worldPos, Color.red);
+        }
     }
 
     protected override void Die()

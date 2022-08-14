@@ -36,22 +36,5 @@ public class zombieManager : MonoBehaviour
                 }
             }
         }
-
-        if(pathFinder != null)
-        {
-            for(int i = 0; i < transform.childCount; i++)
-            {
-                Zombie zomb = transform.GetChild(i).GetComponent<Zombie>();
-                if(zomb.showPath)
-                {
-                    Gizmos.color = Color.yellow;
-                    for(int j = 1; j < zomb.path.Count; j++)
-                    {
-                        Gizmos.DrawLine(zomb.path[j - 1].worldPos, zomb.path[j].worldPos);
-                    }
-                }
-                
-            }
-        }
     }
 }
