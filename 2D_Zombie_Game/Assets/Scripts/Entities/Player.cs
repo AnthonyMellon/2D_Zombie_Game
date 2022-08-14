@@ -5,7 +5,7 @@ using TMPro;
 
 public class Player : Entity
 {
-    [Header("Joysticks")]
+    [Header("Input")]
     public Joystick joystickMovement;
     public Joystick joystickAim;
 
@@ -17,11 +17,14 @@ public class Player : Entity
     private float verticalMovement = 0f;
 
     private Weapon currentWeapon;
+    private Rigidbody2D rb;
+
 
     private void Start()
     {
         base.Start();
         currentWeapon = transform.Find("weapon").GetComponent<Weapon>();
+        rb = transform.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -40,7 +43,8 @@ public class Player : Entity
 
     private void Move()
     {
-        transform.Translate(new Vector3(horizontalMovement, verticalMovement, 0));
+        //transform.Translate(new Vector3(horizontalMovement, verticalMovement, 0));
+        rb.velocity = new Vector2(horizontalMovement * moveSpeed, verticalMovement * moveSpeed);
     }
 
     private void updateHUD()
