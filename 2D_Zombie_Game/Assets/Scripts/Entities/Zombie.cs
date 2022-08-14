@@ -7,6 +7,17 @@ public class Zombie : Entity
     [Header("Path Finding")]
     public GameObject target;
     public bool enableAI;
+    public bool showPath;
+
+    public zombieManager manager;
+
+    [HideInInspector] public List<pathCell> path { get; private set; }
+
+    private void Start()
+    {
+        base.Start();
+        manager = transform.parent.GetComponent<zombieManager>();
+    }
 
     private void FixedUpdate()
     {
@@ -15,6 +26,8 @@ public class Zombie : Entity
 
     private void Move()
     {
+        getPath();
+
         //Face in the direction of the target 
         Vector3 currentPosition = transform.position;
         Vector3 targetPosition = target.transform.position;
@@ -27,7 +40,14 @@ public class Zombie : Entity
         transform.rotation = Quaternion.Euler(0, 0, theta);
        
         //Move towards the target
-        transform.Translate(moveSpeed, 0, 0);
+        //transform.Translate(moveSpeed, 0, 0);
+    }
+
+    private void getPath()
+    {
+        Vector2Int myGridPos = manager.pathFinder.grid.worldPosToGridPos(transform.position);
+        Vector2Int targGridPos = manager.pathFinder.grid.worldPosToGridPos(target.transform.position);
+        path = manager.pathFinder.FindPath(myGridPos.x, myGridPos.y, targGridPos.x, targGridPos.y);
     }
 
     protected override void Die()

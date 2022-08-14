@@ -27,12 +27,27 @@ public class pathGrid
         {
             for(int y = 0; y < numCellsY; y++)
             {
-                float worldPosX = origin.x + (cellSize * (x - (numCellsX / 2)));
-                float worldPosY = origin.y + (cellSize * (y - (numCellsY / 2)));
+                Vector2 worldPos = gridPosToWorldPos(new Vector2Int(x, y));
 
-                cells[x, y] = new pathCell(x, y, worldPosX, worldPosY);
+                cells[x, y] = new pathCell(x, y, worldPos.x, worldPos.y);
                 cells[x, y].determineWalkability();
             }
         }
+    }
+
+    public Vector2Int worldPosToGridPos(Vector2 worldPos)
+    {
+        int gridX = Mathf.RoundToInt(((worldPos.x - origin.x) / cellSize) + (numCellsX / 2));
+        int gridY = Mathf.RoundToInt(((worldPos.y - origin.y) / cellSize) + (numCellsY / 2));
+
+        return new Vector2Int(gridX, gridY);
+    }
+
+    public Vector2 gridPosToWorldPos(Vector2Int gridPos)
+    {
+        float worldX = origin.x + (cellSize * (gridPos.x - (numCellsX / 2)));
+        float worldY = origin.y + (cellSize * (gridPos.y - (numCellsY / 2)));
+
+        return new Vector2(worldX, worldY);
     }
 }
