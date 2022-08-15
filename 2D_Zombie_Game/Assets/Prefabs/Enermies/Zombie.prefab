@@ -45,9 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 018141b45e3988f47b646ce8cbede3a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
-  moveSpeed: 3
+  self: {fileID: 11400000, guid: 05a2a0a332172b443a1aa6cd88d8d5d1, type: 2}
   target: {fileID: 0}
   enableAI: 1
   showPath: 0

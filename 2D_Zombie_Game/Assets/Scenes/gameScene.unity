@@ -139,6 +139,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zombie (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4677760025093688485, guid: fd981f50a64816d40ac0708fb14051fc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4677760025093688486, guid: fd981f50a64816d40ac0708fb14051fc, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -355,6 +359,10 @@ PrefabInstance:
     - target: {fileID: 4677760025093688485, guid: fd981f50a64816d40ac0708fb14051fc, type: 3}
       propertyPath: m_Name
       value: Zombie (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4677760025093688485, guid: fd981f50a64816d40ac0708fb14051fc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4677760025093688486, guid: fd981f50a64816d40ac0708fb14051fc, type: 3}
       propertyPath: m_RootOrder
@@ -1017,9 +1025,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1bfb238d31a89147802090bf42ac739, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
-  moveSpeed: 2
+  self: {fileID: 11400000, guid: 6c1d858dc80120d4b8699a5cc274b421, type: 2}
   joystickMovement: {fileID: 1449204015}
   joystickAim: {fileID: 1766055888}
   health: {fileID: 2003039683}
@@ -1442,6 +1448,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zombie (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4677760025093688485, guid: fd981f50a64816d40ac0708fb14051fc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4677760025093688486, guid: fd981f50a64816d40ac0708fb14051fc, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1851,11 +1861,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4677760025093688486, guid: fd981f50a64816d40ac0708fb14051fc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.292
+      value: 8.85
       objectReference: {fileID: 0}
     - target: {fileID: 4677760025093688486, guid: fd981f50a64816d40ac0708fb14051fc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.627
+      value: -4.4
       objectReference: {fileID: 0}
     - target: {fileID: 4677760025093688486, guid: fd981f50a64816d40ac0708fb14051fc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1906,8 +1916,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4677760025093688487, guid: fd981f50a64816d40ac0708fb14051fc, type: 3}
+      propertyPath: moveSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4677760025093688487, guid: fd981f50a64816d40ac0708fb14051fc, type: 3}
       propertyPath: pathFindDelay
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4677760025093688487, guid: fd981f50a64816d40ac0708fb14051fc, type: 3}
+      propertyPath: numMovesBeforePathUpdate
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4677760025093688487, guid: fd981f50a64816d40ac0708fb14051fc, type: 3}
+      propertyPath: numStepsBeforePathUpdate
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd981f50a64816d40ac0708fb14051fc, type: 3}

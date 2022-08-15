@@ -4,25 +4,22 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
-    public float maxHealth;
-    public float currentHealth;
-
-    [Header("Movement")]
-    public float moveSpeed;
+    [SerializeField]
+    protected Entity_SO self;
 
     protected void Start()
     {
-        currentHealth = maxHealth;
+        self.Setup();
     }
 
     protected void Update()
     {
-        if (currentHealth <= 0) Die();
+        if (self.currentHealth <= 0) Die();
     }
 
     public void Damage(float damageValue)
     {
-        currentHealth -= damageValue;
+        self.currentHealth -= damageValue;
     }
 
     protected virtual void Die()

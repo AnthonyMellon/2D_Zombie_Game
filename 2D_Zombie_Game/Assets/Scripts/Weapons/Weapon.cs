@@ -56,10 +56,13 @@ public class Weapon : MonoBehaviour
 
         if(hit)
         {
-            if(hit.transform.parent.transform.tag == "Zombie")
+            if(hit.transform.parent != null)
             {
-                Zombie hitScript = hit.transform.parent.transform.GetComponent<Zombie>();
-                hitScript.Damage(damage);
+                if (hit.transform.parent.transform.tag == "Zombie")
+                {
+                    Zombie hitScript = hit.transform.parent.transform.GetComponent<Zombie>();
+                    hitScript.Damage(damage);
+                }
             }
         }
 

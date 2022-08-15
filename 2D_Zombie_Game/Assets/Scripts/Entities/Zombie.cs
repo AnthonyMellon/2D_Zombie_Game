@@ -15,7 +15,7 @@ public class Zombie : Entity
 
     [HideInInspector] public List<pathCell> path { get; private set; }
 
-    private void Start()
+    private new void Start()
     {
         base.Start();
         manager = transform.parent.GetComponent<zombieManager>();        
@@ -33,7 +33,7 @@ public class Zombie : Entity
         {            
             Vector2 targetPos = path[0].worldPos;
             Debug.Log(targetPos);
-            transform.position = Vector2.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, targetPos, self.moveSpeed * Time.deltaTime);
 
             if ((Vector2)transform.position == targetPos)
             {
@@ -103,5 +103,10 @@ public class Zombie : Entity
         transform.Find("ZombieSprite").GetComponent<SpriteRenderer>().color = Color.red;
         yield return new WaitForSeconds(.1f);
         transform.Find("ZombieSprite").GetComponent<SpriteRenderer>().color = Color.white;
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        Debug.Log("Im touching something!");
     }
 }

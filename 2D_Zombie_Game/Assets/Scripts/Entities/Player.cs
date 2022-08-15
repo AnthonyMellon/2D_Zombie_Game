@@ -32,8 +32,8 @@ public class Player : Entity
     {
         base.Update();
         updateHUD();
-        horizontalMovement = joystickMovement.Horizontal * moveSpeed;
-        verticalMovement = joystickMovement.Vertical * moveSpeed;        
+        horizontalMovement = joystickMovement.Horizontal * self.moveSpeed;
+        verticalMovement = joystickMovement.Vertical * self.moveSpeed;        
     }
 
     private void FixedUpdate()
@@ -43,12 +43,12 @@ public class Player : Entity
 
     private void Move()
     {
-        rb.velocity = new Vector2(horizontalMovement * moveSpeed, verticalMovement * moveSpeed);
+        rb.velocity = new Vector2(horizontalMovement * self.moveSpeed, verticalMovement * self.moveSpeed);
     }
 
     private void updateHUD()
     {
-        health.text = $"Health: {currentHealth}/{maxHealth}";
+        health.text = $"Health: {self.currentHealth}/{self.maxHealth}";
         ammo.text = $"Ammo: {currentWeapon.ammoInMag}/{currentWeapon.magSize}";
     }
 }
