@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4677760025093688486}
   - component: {fileID: 4677760025093688487}
+  - component: {fileID: 8088602293351448688}
+  - component: {fileID: 1028534806077614960}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Zombie
@@ -28,8 +30,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 4677760025099517016}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -50,46 +51,14 @@ MonoBehaviour:
   enableAI: 1
   showPath: 0
   numStepsBeforePathUpdate: 3
---- !u!1 &4677760025099517015
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4677760025099517016}
-  - component: {fileID: 4677760025099517017}
-  - component: {fileID: 4677760025099517018}
-  m_Layer: 0
-  m_Name: ZombieSprite
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4677760025099517016
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4677760025099517015}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4677760025093688486}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &4677760025099517017
+  player: {fileID: 11400000, guid: 6c1d858dc80120d4b8699a5cc274b421, type: 2}
+--- !u!212 &8088602293351448688
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4677760025099517015}
+  m_GameObject: {fileID: 4677760025093688485}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -135,13 +104,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &4677760025099517018
+--- !u!61 &1028534806077614960
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4677760025099517015}
+  m_GameObject: {fileID: 4677760025093688485}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}

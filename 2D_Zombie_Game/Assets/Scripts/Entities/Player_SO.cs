@@ -5,5 +5,5 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Player", menuName = "ScriptableObjects/Entities/Player")]
 public class Player_SO : Entity_SO
 {    
-    public Weapon_SO currentWeapon;
+
 }

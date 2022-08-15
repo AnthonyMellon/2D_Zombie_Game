@@ -13,6 +13,8 @@ public class Zombie : Entity
 
     private zombieManager manager;
 
+    public Player_SO player;
+
     [HideInInspector] public List<pathCell> path { get; private set; }
 
     private new void Start()
@@ -106,6 +108,9 @@ public class Zombie : Entity
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("Im touching something!");
+        if(collision.transform.tag == "Player")
+        {
+            player.currentHealth -= self.currentWeapon.damage;
+        }
     }
 }

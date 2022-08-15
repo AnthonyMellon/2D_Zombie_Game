@@ -13,6 +13,8 @@ public class Entity_SO : ScriptableObject
     [Header("Movement")]
     public float moveSpeed;
 
+    public Weapon_SO currentWeapon;
+
     public void Setup()
     {
         currentHealth = maxHealth;
