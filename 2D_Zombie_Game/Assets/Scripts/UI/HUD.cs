@@ -5,7 +5,7 @@ using TMPro;
 
 public class HUD : MonoBehaviour
 {
-    public Entity_SO player;
+    public Player_SO player;
 
     public TMP_Text health;
     public TMP_Text ammo;
@@ -14,6 +14,8 @@ public class HUD : MonoBehaviour
     void Update()
     {
         health.text = $"{player.currentHealth}/{player.maxHealth}";
-        
+        ammo.text = $"{player.currentWeapon.ammoInMag}/{player.currentWeapon.magSize}";
+
+
     }
 }

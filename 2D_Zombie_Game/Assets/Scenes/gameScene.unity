@@ -777,7 +777,7 @@ GameObject:
   - component: {fileID: 674070482}
   - component: {fileID: 674070483}
   m_Layer: 0
-  m_Name: weapon
+  m_Name: weaponManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -810,16 +810,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 522e3b3371c36444ba9f3c8ef7307392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  self: {fileID: 11400000, guid: bdaf8a8b3b8a1b041aee966c9b05a362, type: 2}
+  player: {fileID: 11400000, guid: 6c1d858dc80120d4b8699a5cc274b421, type: 2}
   weaponJoystick: {fileID: 1766055888}
   joystickDeadZone: 0.2
-  damage: 10
-  range: 10
-  fireRate: 10
-  magSize: 100
-  reloadSpeed: 1
-  roundLoaded: 1
-  reloading: 0
-  ammoInMag: 0
 --- !u!1 &711375390
 GameObject:
   m_ObjectHideFlags: 0
@@ -1337,6 +1331,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1454413216}
+  - component: {fileID: 1454413217}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -1366,6 +1361,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -50}
   m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1454413217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1454413215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d3b09e645445594fad6485d606aca73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 11400000, guid: 6c1d858dc80120d4b8699a5cc274b421, type: 2}
+  health: {fileID: 2003039683}
+  ammo: {fileID: 327793951}
 --- !u!1 &1555012867
 GameObject:
   m_ObjectHideFlags: 0

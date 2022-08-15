@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31ebf63cf9626294392d51eb76579dd9, type: 3}
+  m_Script: {fileID: 11500000, guid: 4958fdf3197e294488fcec0bdbce70e3, type: 3}
   m_Name: Player
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 100
   moveSpeed: 2
+  currentWeapon: {fileID: 11400000, guid: 5601e1cbb0033f146b14b187697cc5a5, type: 2}

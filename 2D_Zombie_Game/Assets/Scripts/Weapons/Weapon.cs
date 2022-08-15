@@ -5,23 +5,28 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     public Weapon_SO self;
+    public Player_SO player;
 
     [Header("Input")]
     [SerializeField] private Joystick weaponJoystick;
     [Range(0, 1)]
     [SerializeField] private float joystickDeadZone;
     [SerializeField]private const KeyCode RELOAD_KEY = KeyCode.R;
+
+    public List<Weapon_SO> weapons;
     
 
     // Start is called before the first frame update
     void Start()
     {
-        self.Setup();
+        self.Setup();        
     }
 
     // Update is called once per frame
     void Update()
     {
+        self = player.currentWeapon;
+
         //Shoot when the joystick is moved outside the deadzone, and if the player as ammo to shoot
         Debug.DrawRay(transform.parent.position, new Vector2(weaponJoystick.Horizontal, weaponJoystick.Vertical) * self.range, Color.yellow);
         if (Mathf.Abs(weaponJoystick.Horizontal) > joystickDeadZone || Mathf.Abs(weaponJoystick.Vertical) > joystickDeadZone)
@@ -37,7 +42,22 @@ public class Weapon : MonoBehaviour
                 StartCoroutine(reloadMag());
             }
         }
+
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            player.currentWeapon = weapons[0];
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            player.currentWeapon = weapons[1];
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            player.currentWeapon = weapons[2];
+        }
+ 
     }    
+
 
     private void shoot(float vert, float horiz)
     {

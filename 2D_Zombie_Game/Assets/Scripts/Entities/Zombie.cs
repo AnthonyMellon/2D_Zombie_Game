@@ -32,7 +32,6 @@ public class Zombie : Entity
         if(path != null && path.Count > 0)
         {            
             Vector2 targetPos = path[0].worldPos;
-            Debug.Log(targetPos);
             transform.position = Vector2.MoveTowards(transform.position, targetPos, self.moveSpeed * Time.deltaTime);
 
             if ((Vector2)transform.position == targetPos)

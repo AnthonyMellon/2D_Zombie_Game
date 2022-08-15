@@ -19,19 +19,17 @@ public class Player : Entity
     private Weapon weapon;
     private Rigidbody2D rb;
 
-
     private void Start()
     {
         base.Start();
-        weapon = transform.Find("weapon").GetComponent<Weapon>();
-        rb = transform.GetComponent<Rigidbody2D>();
+        weapon = transform.Find("weaponManager").GetComponent<Weapon>();
+        rb = transform.GetComponent<Rigidbody2D>();        
     }
 
     // Update is called once per frame
     private void Update()
     {
         base.Update();
-        updateHUD();
         horizontalMovement = joystickMovement.Horizontal * self.moveSpeed;
         verticalMovement = joystickMovement.Vertical * self.moveSpeed;        
     }
@@ -44,11 +42,5 @@ public class Player : Entity
     private void Move()
     {
         rb.velocity = new Vector2(horizontalMovement * self.moveSpeed, verticalMovement * self.moveSpeed);
-    }
-
-    private void updateHUD()
-    {
-        //health.text = $"Health: {self.currentHealth}/{self.maxHealth}";
-        ammo.text = $"Ammo: {weapon.self.ammoInMag}/{weapon.self.magSize}";
     }
 }
