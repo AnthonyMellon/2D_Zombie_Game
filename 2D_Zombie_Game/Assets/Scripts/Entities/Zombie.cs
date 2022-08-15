@@ -8,8 +8,8 @@ public class Zombie : Entity
     public GameObject target;
     public bool enableAI;
     public bool showPath;
-    public int pathFindDelay;
-    private int pathWait;
+    public int numStepsBeforePathUpdate;
+    private int numStepsSinceLastPathUpdate;
 
     private zombieManager manager;
 
@@ -18,8 +18,8 @@ public class Zombie : Entity
     private void Start()
     {
         base.Start();
-        manager = transform.parent.GetComponent<zombieManager>();
-        pathWait = pathFindDelay;
+        manager = transform.parent.GetComponent<zombieManager>();        
+        numStepsSinceLastPathUpdate = numStepsBeforePathUpdate;
     }
 
     private void FixedUpdate()
@@ -28,35 +28,52 @@ public class Zombie : Entity
     }
 
     private void Move()
-    {
-        getPath();
+    {       
+        if(path != null && path.Count > 0)
+        {            
+            Vector2 targetPos = path[0].worldPos;
+            Debug.Log(targetPos);
+            transform.position = Vector2.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
 
-        //Face in the direction of the target 
+            if ((Vector2)transform.position == targetPos)
+            {
+                path.RemoveAt(0);
+                numStepsSinceLastPathUpdate++;
+                if (numStepsSinceLastPathUpdate >= numStepsBeforePathUpdate) updatePath();
+            }
+        }
+        else
+        {
+            updatePath();
+        }
+
+        if (showPath && path != null) drawPath();
+    }
+
+    private void faceTarget()
+    {
         Vector3 currentPosition = transform.position;
-        Vector3 targetPosition = target.transform.position;
+        Vector3 targetPosition = new Vector2(0, 0);
+
+        if(path != null && path[0] != null)
+        {
+            targetPosition = path[0].worldPos;
+        }
 
         float distX = targetPosition.x - currentPosition.x;
         float distY = targetPosition.y - currentPosition.y;
-        float theta = Mathf.Atan2(distY, distX) * (180/Mathf.PI);
+        float theta = Mathf.Atan2(distY, distX) * (180 / Mathf.PI);
+
         transform.rotation = Quaternion.Euler(0, 0, theta);
-       
-        //Move towards the target
-        //transform.Translate(moveSpeed, 0, 0);
     }
 
-    private void getPath()
-    {
-        pathWait ++;
-
-        if(pathWait >= pathFindDelay)
-        {
-            Vector2Int myGridPos = manager.pathFinder.grid.worldPosToGridPos(transform.position);
-            Vector2Int targGridPos = manager.pathFinder.grid.worldPosToGridPos(target.transform.position);
-            path = manager.pathFinder.FindPath(myGridPos.x, myGridPos.y, targGridPos.x, targGridPos.y);            
-            pathWait = 0;            
-        }
-        if (showPath) drawPath();
-
+    private void updatePath()
+    {        
+        Vector2Int myGridPos = manager.pathFinder.grid.worldPosToGridPos(transform.position);
+        Vector2Int targGridPos = manager.pathFinder.grid.worldPosToGridPos(target.transform.position);
+        path = manager.pathFinder.FindPath(myGridPos.x, myGridPos.y, targGridPos.x, targGridPos.y);
+        path.RemoveAt(0);
+        numStepsSinceLastPathUpdate = 0;        
     }
 
     private void drawPath()

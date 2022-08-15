@@ -47,9 +47,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
-  moveSpeed: 0.05
+  moveSpeed: 3
   target: {fileID: 0}
   enableAI: 1
+  showPath: 0
+  numStepsBeforePathUpdate: 3
 --- !u!1 &4677760025099517015
 GameObject:
   m_ObjectHideFlags: 0
