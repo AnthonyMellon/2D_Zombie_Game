@@ -16,14 +16,14 @@ public class Player : Entity
     private float horizontalMovement = 0f;
     private float verticalMovement = 0f;
 
-    private Weapon currentWeapon;
+    private Weapon weapon;
     private Rigidbody2D rb;
 
 
     private void Start()
     {
         base.Start();
-        currentWeapon = transform.Find("weapon").GetComponent<Weapon>();
+        weapon = transform.Find("weapon").GetComponent<Weapon>();
         rb = transform.GetComponent<Rigidbody2D>();
     }
 
@@ -49,6 +49,6 @@ public class Player : Entity
     private void updateHUD()
     {
         //health.text = $"Health: {self.currentHealth}/{self.maxHealth}";
-        ammo.text = $"Ammo: {currentWeapon.ammoInMag}/{currentWeapon.magSize}";
+        ammo.text = $"Ammo: {weapon.self.ammoInMag}/{weapon.self.magSize}";
     }
 }
