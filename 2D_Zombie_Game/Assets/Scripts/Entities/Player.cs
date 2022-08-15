@@ -48,7 +48,7 @@ public class Player : Entity
 
     private void updateHUD()
     {
-        health.text = $"Health: {self.currentHealth}/{self.maxHealth}";
+        //health.text = $"Health: {self.currentHealth}/{self.maxHealth}";
         ammo.text = $"Ammo: {currentWeapon.ammoInMag}/{currentWeapon.magSize}";
     }
 }
