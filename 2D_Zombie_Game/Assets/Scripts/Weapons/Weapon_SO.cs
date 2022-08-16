@@ -21,5 +21,7 @@ public class Weapon_SO : ScriptableObject
     public void Setup()
     {
         ammoInMag = magSize;
+        reloading = false;
+        roundLoaded = true;
     }
 }

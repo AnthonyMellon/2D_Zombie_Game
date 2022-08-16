@@ -15,4 +15,8 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 100
   moveSpeed: 2
+  weaponsInv:
+  - {fileID: 11400000, guid: bdaf8a8b3b8a1b041aee966c9b05a362, type: 2}
+  - {fileID: 11400000, guid: 5601e1cbb0033f146b14b187697cc5a5, type: 2}
+  - {fileID: 11400000, guid: 05f0fbc68d11bf947a8b999dda836c96, type: 2}
   currentWeapon: {fileID: 11400000, guid: 5601e1cbb0033f146b14b187697cc5a5, type: 2}

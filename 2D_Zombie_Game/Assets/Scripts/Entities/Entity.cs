@@ -5,14 +5,18 @@ using UnityEngine;
 public class Entity : MonoBehaviour
 {
     [SerializeField]
-    protected Entity_SO self;
+    public Entity_SO self;
 
-    protected void Start()
+    protected Weapon weaponManager;
+
+    protected void onStart()
     {
         self.Setup();
+        weaponManager = transform.Find("weaponManager").GetComponent<Weapon>();
+        swapWeapon(self.weaponsInv[0]);
     }
 
-    protected void Update()
+    protected void onUpdate()
     {
         if (self.currentHealth <= 0) Die();
     }
@@ -25,5 +29,12 @@ public class Entity : MonoBehaviour
     protected virtual void Die()
     {
         //Debug.Log($"{transform.name} died!");
+    }
+
+    public void swapWeapon(Weapon_SO newWeapon)
+    {
+        self.currentWeapon = newWeapon;
+        self.currentWeapon.Setup();
+        weaponManager.currentWeapon = self.currentWeapon;
     }
 }

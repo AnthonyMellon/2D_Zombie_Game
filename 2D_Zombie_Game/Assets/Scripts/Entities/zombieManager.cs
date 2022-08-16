@@ -6,7 +6,6 @@ public class zombieManager : MonoBehaviour
 {
     [Header("Debug")]
     public bool showGrid;
-    public bool showPaths;
     public pathFinder pathFinder { get; private set; }
     // Start is called before the first frame update
     void Start()

@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   range: 10
-  fireRate: 10
-  magSize: 100
+  fireRate: 5
+  magSize: 10
   reloadSpeed: 1
   roundLoaded: 1
   reloading: 0
-  ammoInMag: 0
+  ammoInMag: 10

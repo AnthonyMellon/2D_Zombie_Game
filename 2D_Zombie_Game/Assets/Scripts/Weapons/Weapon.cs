@@ -4,105 +4,63 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    public Weapon_SO self;
-    public Player_SO player;
-
-    [Header("Input")]
-    [SerializeField] private Joystick weaponJoystick;
-    [Range(0, 1)]
-    [SerializeField] private float joystickDeadZone;
-    [SerializeField]private const KeyCode RELOAD_KEY = KeyCode.R;
-
-    public List<Weapon_SO> weapons;
-    
+    public Weapon_SO currentWeapon;
 
     // Start is called before the first frame update
     void Start()
     {
-        self.Setup();        
-    }
+        currentWeapon.Setup();
+    }   
 
-    // Update is called once per frame
-    void Update()
+    public void shoot(float horiz, float vert)
     {
-        self = player.currentWeapon;
+        Debug.DrawLine(transform.position, (Vector2)transform.position + new Vector2(horiz, vert) * currentWeapon.range, Color.magenta);
 
-        //Shoot when the joystick is moved outside the deadzone, and if the player as ammo to shoot
-        Debug.DrawRay(transform.parent.position, new Vector2(weaponJoystick.Horizontal, weaponJoystick.Vertical) * self.range, Color.yellow);
-        if (Mathf.Abs(weaponJoystick.Horizontal) > joystickDeadZone || Mathf.Abs(weaponJoystick.Vertical) > joystickDeadZone)
+        if(currentWeapon.ammoInMag > 0) //Is there ammo available to shoot with?
         {
-            if (self.ammoInMag > 0 && self.roundLoaded) shoot(weaponJoystick.Vertical, weaponJoystick.Horizontal);
-        } 
-        
-        //Manual reload
-        if(Input.GetKeyDown(RELOAD_KEY))
-        {
-            if(!self.reloading && self.ammoInMag < self.magSize)
+            if(currentWeapon.roundLoaded && !currentWeapon.reloading) //Do I have a round loaded and am I not in the middle or reloading?
             {
-                StartCoroutine(reloadMag());
-            }
-        }
+                List<RaycastHit2D> hits = new List<RaycastHit2D>(Physics2D.RaycastAll(transform.parent.position, new Vector2(horiz, vert), currentWeapon.range));
+                if (hits[0].transform == transform.parent) hits.RemoveAt(0); //Remove self from the list of hits
 
-        if(Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            player.currentWeapon = weapons[0];
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            player.currentWeapon = weapons[1];
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            player.currentWeapon = weapons[2];
-        }
- 
-    }    
-
-
-    private void shoot(float vert, float horiz)
-    {
-        RaycastHit2D hit = Physics2D.Raycast(transform.parent.position, new Vector2(horiz, vert), self.range);        
-
-        if(hit)
-        {
-            if(hit.transform.parent != null)
-            {
-                if (hit.transform.parent.transform.tag == "Zombie")
-                {
-                    Zombie hitScript = hit.transform.parent.transform.GetComponent<Zombie>();
-                    hitScript.Damage(self.damage);
+                if (hits.Count > 0 && hits[0].transform != null) //Ensure whatever was hit has a transform
+                {   
+                    if (hits[0].transform.TryGetComponent(out Entity hitEntity))
+                    {
+                        hitEntity.Damage(currentWeapon.damage);
+                        Debug.Log($"{hitEntity.self.name}: {hitEntity.self.currentHealth}/{hitEntity.self.maxHealth}");
+                    }
                 }
+                StartCoroutine(cycleRound());
             }
         }
-
-        StartCoroutine(cycleRound());
-
-        //Automatic reload
-        if (self.ammoInMag == 0)
+        else //No ammo left :( auto reload
         {
-            StartCoroutine(reloadMag());
-        }
+            tryReload();
+        }                
     }
 
     //Cycles the round in the weapon
     private IEnumerator cycleRound()
     {
-        self.ammoInMag -= 1;
-        self.roundLoaded = false;
-        yield return new WaitForSeconds(1 / self.fireRate);
-        self.roundLoaded = true;
+        currentWeapon.ammoInMag -= 1;
+        currentWeapon.roundLoaded = false;
+        yield return new WaitForSeconds(1 / currentWeapon.fireRate);
+        currentWeapon.roundLoaded = true;
     }
 
-    //Used after the entier mag is spent
-    private IEnumerator reloadMag()
-    {        
-        if(!self.reloading)
+    public void tryReload()
+    {      
+        if (!currentWeapon.reloading && currentWeapon.ammoInMag < currentWeapon.magSize) //Not reloading currently and missing ammo in mag
         {
-            self.reloading = true;
-            yield return new WaitForSeconds(self.reloadSpeed);
-            self.ammoInMag = self.magSize;
-            self.reloading = false;
-        }        
-       
+            StartCoroutine(reload());
+        }
+    }
+    private IEnumerator reload()
+    {
+        currentWeapon.reloading = true;
+        yield return new WaitForSeconds(currentWeapon.reloadSpeed);
+        currentWeapon.ammoInMag = currentWeapon.magSize;
+        currentWeapon.reloading = false;        
     }
 }

@@ -15,7 +15,5 @@ public class HUD : MonoBehaviour
     {
         health.text = $"{player.currentHealth}/{player.maxHealth}";
         ammo.text = $"{player.currentWeapon.ammoInMag}/{player.currentWeapon.magSize}";
-
-
     }
 }

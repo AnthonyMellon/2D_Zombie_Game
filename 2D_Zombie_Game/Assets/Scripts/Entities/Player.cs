@@ -6,8 +6,11 @@ using TMPro;
 public class Player : Entity
 {
     [Header("Input")]
-    public Joystick joystickMovement;
-    public Joystick joystickAim;
+    [SerializeField] private Joystick joystickMovement;
+    [SerializeField] private Joystick joystickAim;
+    [Range(0, 1)]
+    [SerializeField] private float aimDeadZone;
+    [SerializeField] private const KeyCode RELOAD_KEY = KeyCode.R;
 
     [Header("HUD")]
     public TMP_Text health;
@@ -16,27 +19,68 @@ public class Player : Entity
     private float horizontalMovement = 0f;
     private float verticalMovement = 0f;
 
-    private Weapon weapon;
     private Rigidbody2D rb;
 
     private void Start()
     {
-        base.Start();
-        weapon = transform.Find("weaponManager").GetComponent<Weapon>();
+        base.onStart();
         rb = transform.GetComponent<Rigidbody2D>();        
     }
 
-    // Update is called once per frame
     private void Update()
     {
-        base.Update();
-        horizontalMovement = joystickMovement.Horizontal * self.moveSpeed;
-        verticalMovement = joystickMovement.Vertical * self.moveSpeed;        
+        base.onUpdate();
+        handleInputs();
+
     }
 
     private void FixedUpdate()
     {
         Move();
+    }
+
+    private void handleInputs()
+    {
+        moveInput();
+        weaponInput();
+        inventoryInput();
+    }
+
+    private void moveInput()
+    {
+        horizontalMovement = joystickMovement.Horizontal * self.moveSpeed;
+        verticalMovement = joystickMovement.Vertical * self.moveSpeed;
+    }
+
+    private void weaponInput()
+    {
+        if (Mathf.Abs(joystickAim.Horizontal) > aimDeadZone || Mathf.Abs(joystickAim.Vertical) > aimDeadZone)
+        {
+            weaponManager.shoot(joystickAim.Horizontal, joystickAim.Vertical);
+        }
+
+        //Manual reload
+        if (Input.GetKeyDown(RELOAD_KEY))
+        {
+            weaponManager.tryReload();
+        }
+
+    }
+
+    private void inventoryInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            swapWeapon(self.weaponsInv[0]);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            swapWeapon(self.weaponsInv[1]);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            swapWeapon(self.weaponsInv[2]);
+        }
     }
 
     private void Move()

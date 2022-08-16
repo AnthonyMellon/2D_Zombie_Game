@@ -13,6 +13,7 @@ public class Entity_SO : ScriptableObject
     [Header("Movement")]
     public float moveSpeed;
 
+    public List<Weapon_SO> weaponsInv;
     public Weapon_SO currentWeapon;
 
     public void Setup()

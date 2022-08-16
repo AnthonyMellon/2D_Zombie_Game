@@ -11,17 +11,23 @@ public class Zombie : Entity
     public int numStepsBeforePathUpdate;
     private int numStepsSinceLastPathUpdate;
 
+    [SerializeField]
     private zombieManager manager;
 
     public Player_SO player;
 
     [HideInInspector] public List<pathCell> path { get; private set; }
 
-    private new void Start()
+    private void Start()
     {
-        base.Start();
+        base.onStart();
         manager = transform.parent.GetComponent<zombieManager>();        
         numStepsSinceLastPathUpdate = numStepsBeforePathUpdate;
+    }
+
+    private void Update()
+    {
+        base.onUpdate();
     }
 
     private void FixedUpdate()
@@ -30,7 +36,7 @@ public class Zombie : Entity
     }
 
     private void Move()
-    {       
+    {
         if(path != null && path.Count > 0)
         {            
             Vector2 targetPos = path[0].worldPos;
