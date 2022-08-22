@@ -52,6 +52,7 @@ MonoBehaviour:
   enableAI: 1
   showPath: 0
   numStepsBeforePathUpdate: 3
+  manager: {fileID: 0}
   player: {fileID: 11400000, guid: 6c1d858dc80120d4b8699a5cc274b421, type: 2}
 --- !u!212 &8088602293351448688
 SpriteRenderer:
@@ -146,6 +147,14 @@ PrefabInstance:
       propertyPath: currentWeapon
       value: 
       objectReference: {fileID: 11400000, guid: 8de27810cb4d7814a9a3697dafc806cd, type: 2}
+    - target: {fileID: 4129267193896994485, guid: 7736199f95d227d4ba2cc374cbbd97c6, type: 3}
+      propertyPath: hitBlackList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129267193896994485, guid: 7736199f95d227d4ba2cc374cbbd97c6, type: 3}
+      propertyPath: hitBlackList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 05a2a0a332172b443a1aa6cd88d8d5d1, type: 2}
     - target: {fileID: 6363373592740854464, guid: 7736199f95d227d4ba2cc374cbbd97c6, type: 3}
       propertyPath: m_RootOrder
       value: 0

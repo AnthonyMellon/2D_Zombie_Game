@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31ebf63cf9626294392d51eb76579dd9, type: 3}
   m_Name: Zombie
   m_EditorClassIdentifier: 
+  name: Zombie
   maxHealth: 100
   currentHealth: 0
   moveSpeed: 3
+  position: {x: 0, y: 0}
   weaponsInv:
   - {fileID: 11400000, guid: 8de27810cb4d7814a9a3697dafc806cd, type: 2}
   currentWeapon: {fileID: 11400000, guid: 8de27810cb4d7814a9a3697dafc806cd, type: 2}
