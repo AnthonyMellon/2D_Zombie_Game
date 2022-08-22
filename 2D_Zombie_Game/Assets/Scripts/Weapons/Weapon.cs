@@ -17,54 +17,40 @@ public class Weapon : MonoBehaviour
     {
         Debug.DrawLine(transform.position, (Vector2)transform.position + new Vector2(horiz, vert) * currentWeapon.range, Color.magenta);
 
-        if(currentWeapon.ammoInMag > 0) //Is there ammo available to shoot with?
+        if (currentWeapon.ammoInMag <= 0) //Ensure there is ammo to shoot with
         {
-            if(currentWeapon.roundLoaded && !currentWeapon.reloading) //Do I have a round loaded and am I not in the middle or reloading?
-            {
-                List<RaycastHit2D> hits = new List<RaycastHit2D>(Physics2D.RaycastAll(transform.parent.position, new Vector2(horiz, vert), currentWeapon.range));
-                
-                if(hits.Count > 0) //Did I actually hit something?
-                {
-                    Entity target = FindValidTarget(hits);
-                    if(target != null) //Was there a valid target?
-                    {
-                        target.Damage(currentWeapon.damage);
-                        Debug.Log($"{target.self.name}: {target.self.currentHealth}/{target.self.maxHealth}");
-                    }
-                    StartCoroutine(cycleRound());
-                }
-
-            }
+            tryReload(); //Auto reload
+            return;
         }
-        else //No ammo left :( auto reload
-        {
-            tryReload();
-        }                
+        if (!currentWeapon.roundLoaded) return; //Ensure there is a round loaded
+        if (currentWeapon.reloading) return; //Ensure the weapon isnt currently reloading
+
+        //Shot fired//
+        StartCoroutine(cycleRound());
+
+        List<RaycastHit2D> hits = new List<RaycastHit2D>(Physics2D.RaycastAll(transform.parent.position, new Vector2(horiz, vert), currentWeapon.range));
+        if (hits.Count <= 0) return; //Ensure something was actually hit
+                                     
+        Entity target = FindValidTarget(hits);
+        if (target == null) return; //Ensure there was a valid target hit        
+            
+        target.Damage(currentWeapon.damage);
+        //Debug.Log($"{target.self.name}: {target.self.currentHealth}/{target.self.maxHealth}");                                    
     }
 
     public Entity FindValidTarget(List<RaycastHit2D> candidates)
     {
         foreach(RaycastHit2D candidate in candidates)
         {
-            if(candidate.transform != null) //Does the target have a transform
+            if (candidate.transform == null) continue; //Ensure the target has a transform
+            if (candidate.transform == transform.parent) continue; //Ensure candidate isnt the parent
+            if (!candidate.transform.TryGetComponent(out Entity candidateEntity)) continue; //Ensure the candidate is an entity
+            foreach(Entity_SO blackListHit in hitBlackList)
             {
-                if (candidate.transform != transform.parent) //Ensure candidate isnt self
-                {
-                    if (candidate.transform.TryGetComponent(out Entity candidateEntity)) //Is the candidate an entity?
-                    {
-                        foreach(Entity_SO blackListHit in hitBlackList)
-                        {
-                            Debug.Log($"{blackListHit.name}|{candidateEntity.self.name}");
-                            if(candidateEntity.self.name != blackListHit.name) //Is the entity not on the black list?
-                            {
-                                return candidateEntity;
-                            }
-                        }    
-                    }
-                }
-            }
+                if (candidateEntity.self.name == blackListHit.name) continue; //Ensure the candidate isnt on the blacklist                
+                return candidateEntity;                
+            }                                       
         }
-
         return null;
     }
 
