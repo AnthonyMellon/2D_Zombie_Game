@@ -19,9 +19,10 @@ public class Entity : MonoBehaviour
     protected void onUpdate()
     {
         if (self.currentHealth <= 0) Die();
+        self.position = transform.position;
     }
 
-    public void Damage(float damageValue)
+    public virtual void Damage(float damageValue)
     {
         self.currentHealth -= damageValue;
     }

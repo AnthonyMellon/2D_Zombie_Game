@@ -12,6 +12,7 @@ public class Entity_SO : ScriptableObject
 
     [Header("Movement")]
     public float moveSpeed;
+    public Vector2 position;
 
     public List<Weapon_SO> weaponsInv;
     public Weapon_SO currentWeapon;

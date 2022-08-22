@@ -23,6 +23,7 @@ public class Zombie : Entity
         base.onStart();
         manager = transform.parent.GetComponent<zombieManager>();        
         numStepsSinceLastPathUpdate = numStepsBeforePathUpdate;
+        self = Instantiate(self);
     }
 
     private void Update()
@@ -32,7 +33,14 @@ public class Zombie : Entity
 
     private void FixedUpdate()
     {
-        if (enableAI) Move();       
+        if (enableAI)
+        {
+            Move();
+
+            Vector2 shootDir = (player.position - self.position).normalized;
+            weaponManager.shoot(shootDir.x, shootDir.y);
+        }
+                   
     }
 
     private void Move()
@@ -97,26 +105,25 @@ public class Zombie : Entity
         GameObject.Destroy(gameObject);
     }
 
-    public void Damage(float damageValue)
+    public override void Damage(float damageValue)
     {
         base.Damage(damageValue);
         StartCoroutine(DamageAnim());
-
     }
 
     private IEnumerator DamageAnim()
     {
         //Temp Damage animation for debug
-        transform.Find("ZombieSprite").GetComponent<SpriteRenderer>().color = Color.red;
+        transform.GetComponent<SpriteRenderer>().color = Color.red;
         yield return new WaitForSeconds(.1f);
-        transform.Find("ZombieSprite").GetComponent<SpriteRenderer>().color = Color.white;
+        transform.GetComponent<SpriteRenderer>().color = Color.white;
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.transform.tag == "Player")
+/*        if(collision.transform.tag == "Player")
         {
             player.currentHealth -= self.currentWeapon.damage;
-        }
+        }*/
     }
 }
