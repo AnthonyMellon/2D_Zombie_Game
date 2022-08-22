@@ -28,7 +28,7 @@ public class Entity : MonoBehaviour
 
     protected virtual void Die()
     {
-        //Debug.Log($"{transform.name} died!");
+
     }
 
     public void swapWeapon(Weapon_SO newWeapon)

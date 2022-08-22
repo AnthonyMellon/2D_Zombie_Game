@@ -15,6 +15,9 @@ public class Player : Entity
     [Header("HUD")]
     public TMP_Text health;
     public TMP_Text ammo;
+
+    [Header("Events")]
+    public VoidEvent OnDeath;
     
     private float horizontalMovement = 0f;
     private float verticalMovement = 0f;
@@ -31,7 +34,6 @@ public class Player : Entity
     {
         base.onUpdate();
         handleInputs();
-
     }
 
     private void FixedUpdate()
@@ -86,5 +88,10 @@ public class Player : Entity
     private void Move()
     {
         rb.velocity = new Vector2(horizontalMovement * self.moveSpeed, verticalMovement * self.moveSpeed);
+    }
+
+    protected override void Die()
+    {
+        OnDeath.Raise();
     }
 }
