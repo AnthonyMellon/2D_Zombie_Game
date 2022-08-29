@@ -25,6 +25,7 @@ public class Zombie : Entity
         manager = transform.parent.GetComponent<zombieManager>();        
         numStepsSinceLastPathUpdate = numStepsBeforePathUpdate;
         self = Instantiate(self);
+        target = GameObject.Find("Player");
     }
 
     private void Update()
