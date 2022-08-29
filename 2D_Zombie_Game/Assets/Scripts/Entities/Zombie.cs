@@ -15,6 +15,7 @@ public class Zombie : Entity
     private zombieManager manager;
 
     public Player_SO player;
+    public floatSO playerMoney;
 
     [HideInInspector] public List<pathCell> path { get; private set; }
 
@@ -108,6 +109,8 @@ public class Zombie : Entity
     public override void Damage(float damageValue)
     {
         base.Damage(damageValue);
+        playerMoney.value += damageValue;
+        Debug.Log($"player money is now at ${playerMoney.value}");
         StartCoroutine(DamageAnim());
     }
 

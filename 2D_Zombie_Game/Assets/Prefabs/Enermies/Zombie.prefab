@@ -54,6 +54,7 @@ MonoBehaviour:
   numStepsBeforePathUpdate: 3
   manager: {fileID: 0}
   player: {fileID: 11400000, guid: 6c1d858dc80120d4b8699a5cc274b421, type: 2}
+  playerMoney: {fileID: 11400000, guid: 04ed94f467958f3428d5a02502fb9cbf, type: 2}
 --- !u!212 &8088602293351448688
 SpriteRenderer:
   m_ObjectHideFlags: 0
