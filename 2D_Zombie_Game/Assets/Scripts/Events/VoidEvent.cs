@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "VoidEvent", menuName = "Events/VoidEvent")]
 public class VoidEvent : ScriptableObject
 {
-    private readonly List<IGameEventListener> m_eventListeners = new List<IGameEventListener>();
+    protected readonly List<IGameEventListener> m_eventListeners = new List<IGameEventListener>();
 
     public void Raise()
     {

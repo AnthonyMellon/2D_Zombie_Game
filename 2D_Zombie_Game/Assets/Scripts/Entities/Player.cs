@@ -18,6 +18,10 @@ public class Player : Entity
 
     [Header("Events")]
     public VoidEvent OnDeath;
+
+    [Header("Stats")]
+    [SerializeField] private floatSO startMoney;
+    [SerializeField] private floatSO money;
     
     private float horizontalMovement = 0f;
     private float verticalMovement = 0f;
@@ -27,7 +31,8 @@ public class Player : Entity
     private void Start()
     {
         base.onStart();
-        rb = transform.GetComponent<Rigidbody2D>();        
+        rb = transform.GetComponent<Rigidbody2D>();
+        money.value = startMoney.value;
     }
 
     private void Update()
@@ -83,7 +88,7 @@ public class Player : Entity
         {
             swapWeapon(self.weaponsInv[2]);
         }
-    }
+    }    
 
     private void Move()
     {

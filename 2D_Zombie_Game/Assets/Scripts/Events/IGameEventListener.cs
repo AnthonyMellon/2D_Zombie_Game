@@ -5,4 +5,5 @@ using UnityEngine;
 public interface IGameEventListener
 {
     void OnEventRaised();
+    void OnEventRaised(Weapon_SO weapon);
 }

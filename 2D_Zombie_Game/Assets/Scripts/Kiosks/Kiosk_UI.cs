@@ -25,6 +25,7 @@ public class Kiosk_UI : MonoBehaviour
             listing.transform.localPosition = new Vector3(0, (listingHeight + truePadding) * i, 0);
             listing.transform.Find("ItemName").GetComponent<TMP_Text>().text = kioskItems.Inventory[i].weapon.name;
             listing.transform.Find("BuyButton").transform.Find("Text (TMP)").GetComponent<TMP_Text>().text = kioskItems.Inventory[i].cost.ToString();
+            listing.transform.GetComponent<KioskListing>().listedItem = kioskItems.Inventory[i];
         }
     }
 

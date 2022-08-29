@@ -12,6 +12,8 @@ public class UnityGameEventListener : MonoBehaviour, IGameEventListener
     [Tooltip("Response to invoke when event is raised.")]
     [SerializeField]
     private UnityEvent response;
+    [SerializeField]
+    private EventWeapon weaponResponse;
 
     public void OnEnable()
     {
@@ -25,5 +27,10 @@ public class UnityGameEventListener : MonoBehaviour, IGameEventListener
     public void OnEventRaised()
     {
         response?.Invoke();
+    }
+
+    public void OnEventRaised(Weapon_SO weapon)
+    {
+        weaponResponse?.Invoke(weapon);
     }
 }
