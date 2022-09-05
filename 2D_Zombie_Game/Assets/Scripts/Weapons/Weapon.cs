@@ -7,11 +7,28 @@ public class Weapon : MonoBehaviour
     public Weapon_SO currentWeapon;
     public List<Entity_SO> hitBlackList;
 
+    public floatSO ammoInMagExt;
+    public floatSO magSizeExt;
+
     // Start is called before the first frame update
     void Start()
     {
         currentWeapon.Setup();
-    }   
+    }
+
+    private void Update()
+    {
+        UpdateExtValues();
+    }
+
+    private void UpdateExtValues()
+    {
+        if (ammoInMagExt)
+            if (ammoInMagExt.value != currentWeapon.ammoInMag) ammoInMagExt.value = currentWeapon.ammoInMag;
+
+        if (magSizeExt)
+            if (magSizeExt.value != currentWeapon.magSize) magSizeExt.value = currentWeapon.magSize;
+    }
 
     public void shoot(float horiz, float vert)
     {

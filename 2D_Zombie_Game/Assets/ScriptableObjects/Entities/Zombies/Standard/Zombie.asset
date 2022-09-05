@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: Zombie
   m_EditorClassIdentifier: 
   name: Zombie
-  currentHealth: {fileID: 0}
-  maxHealth: {fileID: 11400000, guid: 3e199258c7730d24aa891e7333460523, type: 2}
+  currentHealth: 100
+  maxHealth: 100
+  currentHealthExt: {fileID: 0}
+  maxHealthExt: {fileID: 0}
   moveSpeed: 3
-  position: {x: 0, y: 0}
+  position: {x: 7, y: 0}
   weaponsInv:
   - {fileID: 11400000, guid: 8de27810cb4d7814a9a3697dafc806cd, type: 2}
   currentWeapon: {fileID: 11400000, guid: 8de27810cb4d7814a9a3697dafc806cd, type: 2}

@@ -18,7 +18,8 @@ public class ProgressImage : Image
         else
             fillAmount = (referenceValue.value / maxReferenceValue.value);
 
-        color = colorGradient.Evaluate(fillAmount);
+        if (fillAmount > 0) color = colorGradient.Evaluate(fillAmount);
+
     }
 
     private void OnDrawGizmos()

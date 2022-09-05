@@ -17,6 +17,9 @@ MonoBehaviour:
   fireRate: 25
   magSize: 100
   reloadSpeed: 1
+  sprite: {fileID: 21300000, guid: 9a9312d46c8fbdc409f36da138559241, type: 3}
   roundLoaded: 1
   reloading: 0
   ammoInMag: 53
+  maxAmmoExt: {fileID: 0}
+  ammoInMagExt: {fileID: 0}

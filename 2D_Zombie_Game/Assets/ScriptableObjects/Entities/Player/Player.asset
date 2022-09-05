@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Player
   m_EditorClassIdentifier: 
   name: Player
-  currentHealth: {fileID: 0}
-  maxHealth: {fileID: 11400000, guid: f7ce17d799d710f4db7aead4be703850, type: 2}
+  currentHealth: 80
+  maxHealth: 100
+  currentHealthExt: {fileID: 11400000, guid: 63ae1f150d0f67147b9ee2b960f0cda8, type: 2}
+  maxHealthExt: {fileID: 11400000, guid: f7ce17d799d710f4db7aead4be703850, type: 2}
   moveSpeed: 2
   position: {x: 0, y: 0}
   weaponsInv:
