@@ -23,7 +23,7 @@ public class HealthBar : Slider
         if (player)
         {
             float val = Mathf.Lerp(m_Value, player.currentHealth / player.maxHealth, Time.deltaTime * lerpSpeed);
-            fillRect.transform.GetComponent<Image>().color = healthColours.Evaluate(val);
+            fillRect.transform.GetComponent<Image>().color = healthColours.Evaluate(1);
             Set(val, true);
         }
     }

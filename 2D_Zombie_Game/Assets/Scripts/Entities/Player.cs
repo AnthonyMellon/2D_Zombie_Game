@@ -44,6 +44,7 @@ public class Player : Entity
     private void FixedUpdate()
     {
         Move();
+        self.UpdateExtVals();
     }
 
     private void handleInputs()

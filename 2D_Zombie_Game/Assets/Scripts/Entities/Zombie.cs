@@ -85,7 +85,7 @@ public class Zombie : Entity
     }
 
     private void updatePath()
-    {        
+    {
         Vector2Int myGridPos = manager.pathFinder.grid.worldPosToGridPos(transform.position);
         Vector2Int targGridPos = manager.pathFinder.grid.worldPosToGridPos(target.transform.position);
         path = manager.pathFinder.FindPath(myGridPos.x, myGridPos.y, targGridPos.x, targGridPos.y);

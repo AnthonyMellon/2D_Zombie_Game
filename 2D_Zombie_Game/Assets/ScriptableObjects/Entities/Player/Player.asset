@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Player
   m_EditorClassIdentifier: 
   name: Player
-  maxHealth: 100
-  currentHealth: 0
+  currentHealth: {fileID: 0}
+  maxHealth: {fileID: 11400000, guid: f7ce17d799d710f4db7aead4be703850, type: 2}
   moveSpeed: 2
-  position: {x: 0.3060641, y: -1.2998302}
+  position: {x: 0, y: 0}
   weaponsInv:
   - {fileID: 11400000, guid: bdaf8a8b3b8a1b041aee966c9b05a362, type: 2}
   - {fileID: 11400000, guid: 5601e1cbb0033f146b14b187697cc5a5, type: 2}

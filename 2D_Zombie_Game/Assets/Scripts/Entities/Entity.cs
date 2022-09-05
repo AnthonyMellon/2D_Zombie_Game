@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Entity : MonoBehaviour
-{
-    [SerializeField]
+{    
     public Entity_SO self;
 
     protected Weapon weaponManager;
