@@ -14,6 +14,9 @@ public class Weapon_SO : ScriptableObject
     [Tooltip("How many seconds it takes to reload")]
     public float reloadSpeed;
 
+    [Header("Visuals")]
+    public Sprite sprite;
+
     [HideInInspector] public bool roundLoaded = true;
     [HideInInspector] public bool reloading = false;
     [HideInInspector] public float ammoInMag;
