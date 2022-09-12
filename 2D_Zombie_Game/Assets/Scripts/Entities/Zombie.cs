@@ -39,8 +39,7 @@ public class Zombie : Entity
         {
             Move();
 
-            Vector2 shootDir = (player.position - self.position);
-            Debug.Log(player.position + " - " + self.position);            
+            Vector2 shootDir = (player.position - self.position);           
             weaponManager.shoot(shootDir.x, shootDir.y);
         }
                    
