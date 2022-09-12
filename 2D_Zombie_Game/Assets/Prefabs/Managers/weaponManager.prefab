@@ -45,3 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentWeapon: {fileID: 0}
+  hitBlackList: []
+  ammoInMagExt: {fileID: 0}
+  magSizeExt: {fileID: 0}
+  trailObject: {fileID: 329676029631789691, guid: 791c4cb7cc17dea4f9b39bd29397ef12, type: 3}
+  trailLifeTime: 0.1

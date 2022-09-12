@@ -10,6 +10,10 @@ public class Weapon : MonoBehaviour
     public floatSO ammoInMagExt;
     public floatSO magSizeExt;
 
+    [Header("BulletTrail")]
+    public GameObject trailObject;
+    public float trailLifeTime;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,8 +35,10 @@ public class Weapon : MonoBehaviour
     }
 
     public void shoot(float horiz, float vert)
-    {
-        Debug.DrawLine(transform.position, (Vector2)transform.position + new Vector2(horiz, vert) * currentWeapon.range, Color.magenta);
+    {        
+        float shotTheta = Mathf.Atan2(vert, horiz);
+        Vector2 shotEnd = new Vector2(currentWeapon.range * Mathf.Cos(shotTheta), currentWeapon.range * Mathf.Sin(shotTheta));
+        //Debug.DrawLine(transform.position, shotEnd, Color.magenta);
 
         if (currentWeapon.ammoInMag <= 0) //Ensure there is ammo to shoot with
         {
@@ -45,13 +51,24 @@ public class Weapon : MonoBehaviour
         //Shot fired//
         StartCoroutine(cycleRound());
 
+        //Trail
+        GameObject trail = Instantiate(trailObject, transform.parent);
+        LineRenderer trailLine = trail.GetComponent<LineRenderer>();
+        trailLine.positionCount = 2;
+        trailLine.SetPosition(0, transform.parent.position);
+        trailLine.SetPosition(1, shotEnd);
+        Destroy(trail, trailLifeTime);
+
+        //Raycast
         List<RaycastHit2D> hits = new List<RaycastHit2D>(Physics2D.RaycastAll(transform.parent.position, new Vector2(horiz, vert), currentWeapon.range));
         if (hits.Count <= 0) return; //Ensure something was actually hit
                                      
         Entity target = FindValidTarget(hits);
         if (target == null) return; //Ensure there was a valid target hit        
-            
+
+        trailLine.SetPosition(1, target.transform.position);
         target.Damage(currentWeapon.damage);
+
         //Debug.Log($"{target.self.name}: {target.self.currentHealth}/{target.self.maxHealth}");                                    
     }
 

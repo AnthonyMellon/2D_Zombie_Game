@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: Player
   m_EditorClassIdentifier: 
   name: Player
-  currentHealth: 80
+  currentHealth: 10
   maxHealth: 100
   currentHealthExt: {fileID: 11400000, guid: 63ae1f150d0f67147b9ee2b960f0cda8, type: 2}
   maxHealthExt: {fileID: 11400000, guid: f7ce17d799d710f4db7aead4be703850, type: 2}
   moveSpeed: 2
-  position: {x: 0, y: 0}
+  position: {x: 1.1413431, y: -0.027075082}
   weaponsInv:
   - {fileID: 11400000, guid: bdaf8a8b3b8a1b041aee966c9b05a362, type: 2}
   - {fileID: 11400000, guid: 5601e1cbb0033f146b14b187697cc5a5, type: 2}
   - {fileID: 11400000, guid: 05f0fbc68d11bf947a8b999dda836c96, type: 2}
-  currentWeapon: {fileID: 11400000, guid: bdaf8a8b3b8a1b041aee966c9b05a362, type: 2}
+  currentWeapon: {fileID: 11400000, guid: 5601e1cbb0033f146b14b187697cc5a5, type: 2}
