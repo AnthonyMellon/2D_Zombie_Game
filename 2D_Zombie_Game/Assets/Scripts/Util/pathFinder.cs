@@ -13,7 +13,7 @@ public class pathFinder
 
     public pathFinder()
     {
-        grid = new pathGrid(43, 25, .5f, new Vector2(0, 0));
+        grid = new pathGrid(170, 98, .5f, new Vector2(0, 0));
         grid.setup();
     }
 
