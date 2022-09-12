@@ -37,7 +37,7 @@ public class Weapon : MonoBehaviour
     public void shoot(float horiz, float vert)
     {        
         float shotTheta = Mathf.Atan2(vert, horiz);
-        Vector2 shotEnd = new Vector2(currentWeapon.range * Mathf.Cos(shotTheta), currentWeapon.range * Mathf.Sin(shotTheta));
+        Vector2 shotEnd = new Vector2(currentWeapon.range * Mathf.Cos(shotTheta), currentWeapon.range * Mathf.Sin(shotTheta)) + (Vector2)transform.position;
         //Debug.DrawLine(transform.position, shotEnd, Color.magenta);
 
         if (currentWeapon.ammoInMag <= 0) //Ensure there is ammo to shoot with
@@ -64,9 +64,9 @@ public class Weapon : MonoBehaviour
         if (hits.Count <= 0) return; //Ensure something was actually hit
                                      
         Entity target = FindValidTarget(hits);
+        trailLine.SetPosition(1, hits[1].point);      
         if (target == null) return; //Ensure there was a valid target hit        
-
-        trailLine.SetPosition(1, target.transform.position);
+        
         target.Damage(currentWeapon.damage);
 
         //Debug.Log($"{target.self.name}: {target.self.currentHealth}/{target.self.maxHealth}");                                    
