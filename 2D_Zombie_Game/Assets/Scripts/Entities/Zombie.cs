@@ -13,6 +13,7 @@ public class Zombie : Entity
 
     [SerializeField]
     private zombieManager manager;
+    public Animator anim;
 
     public Player_SO player;
     public floatSO playerMoney;
@@ -39,8 +40,8 @@ public class Zombie : Entity
         {
             Move();
 
-            Vector2 shootDir = (player.position - self.position);           
-            weaponManager.shoot(shootDir.x, shootDir.y);
+            Vector2 shootDir = (player.position - self.position);
+            if (weaponManager.shoot(shootDir.x, shootDir.y)) anim.SetTrigger("Attack");
         }
                    
     }
@@ -51,6 +52,11 @@ public class Zombie : Entity
         {            
             Vector2 targetPos = path[0].worldPos;
             transform.position = Vector2.MoveTowards(transform.position, targetPos, self.moveSpeed * Time.deltaTime);
+            anim.SetBool("Walking", true);
+
+            //Face the target
+            if (transform.position.x > targetPos.x) transform.localScale = new Vector2(-.5f, .5f);
+            else if (transform.position.x < targetPos.x) transform.localScale = new Vector2(.5f, .5f);
 
             if ((Vector2)transform.position == targetPos)
             {
@@ -104,7 +110,8 @@ public class Zombie : Entity
     protected override void Die()
     {
         base.Die();
-        GameObject.Destroy(gameObject);
+        anim.SetTrigger("Die");
+        GameObject.Destroy(gameObject, 1);
     }
 
     public override void Damage(float damageValue)

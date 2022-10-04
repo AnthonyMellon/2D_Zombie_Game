@@ -22,6 +22,9 @@ public class Player : Entity
     [Header("Stats")]
     [SerializeField] private floatSO startMoney;
     [SerializeField] private floatSO money;
+
+    [Header("Animation")]
+    public Animator anim;
     
     private float horizontalMovement = 0f;
     private float verticalMovement = 0f;
@@ -58,13 +61,20 @@ public class Player : Entity
     {
         horizontalMovement = joystickMovement.Horizontal * self.moveSpeed;
         verticalMovement = joystickMovement.Vertical * self.moveSpeed;
+
+        if(Mathf.Abs(horizontalMovement) > 0 || Mathf.Abs(verticalMovement) > 0) anim.SetBool("Walking", true);
+        else anim.SetBool("Walking", false);
+
+        if (horizontalMovement > 0) transform.localScale = new Vector3(8, 8, 1);
+        else if (horizontalMovement < 0) transform.localScale = new Vector3(-8, 8, 1);
     }
 
     private void weaponInput()
     {
         if (Mathf.Abs(joystickAim.Horizontal) > aimDeadZone || Mathf.Abs(joystickAim.Vertical) > aimDeadZone)
         {
-            weaponManager.shoot(joystickAim.Horizontal, joystickAim.Vertical);
+            if(weaponManager.shoot(joystickAim.Horizontal, joystickAim.Vertical)) anim.SetTrigger("Attack");
+            
         }
 
         //Manual reload

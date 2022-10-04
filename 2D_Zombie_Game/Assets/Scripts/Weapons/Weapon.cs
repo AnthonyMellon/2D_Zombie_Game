@@ -34,7 +34,7 @@ public class Weapon : MonoBehaviour
             if (magSizeExt.value != currentWeapon.magSize) magSizeExt.value = currentWeapon.magSize;
     }
 
-    public void shoot(float horiz, float vert)
+    public bool shoot(float horiz, float vert) //Returns true if something was hit
     {        
         float shotTheta = Mathf.Atan2(vert, horiz);
         Vector2 shotEnd = new Vector2(currentWeapon.range * Mathf.Cos(shotTheta), currentWeapon.range * Mathf.Sin(shotTheta)) + (Vector2)transform.position;
@@ -43,10 +43,10 @@ public class Weapon : MonoBehaviour
         if (currentWeapon.ammoInMag <= 0) //Ensure there is ammo to shoot with
         {
             tryReload(); //Auto reload
-            return;
+            return false;
         }
-        if (!currentWeapon.roundLoaded) return; //Ensure there is a round loaded
-        if (currentWeapon.reloading) return; //Ensure the weapon isnt currently reloading
+        if (!currentWeapon.roundLoaded) return false; //Ensure there is a round loaded
+        if (currentWeapon.reloading) return false; //Ensure the weapon isnt currently reloading
 
         //Shot fired//
         StartCoroutine(cycleRound());
@@ -61,13 +61,15 @@ public class Weapon : MonoBehaviour
 
         //Raycast
         List<RaycastHit2D> hits = new List<RaycastHit2D>(Physics2D.RaycastAll(transform.parent.position, new Vector2(horiz, vert), currentWeapon.range));
-        if (hits.Count <= 0) return; //Ensure something was actually hit
+        if (hits.Count <= 0) return true; //Ensure something was actually hit
                                      
         Entity target = FindValidTarget(hits);
-        trailLine.SetPosition(1, hits[1].point);      
-        if (target == null) return; //Ensure there was a valid target hit        
+        if(hits.Count > 2) trailLine.SetPosition(1, hits[1].point);      
+        if (target == null) return true; //Ensure there was a valid target hit        
         
         target.Damage(currentWeapon.damage);
+
+        return true;
 
         //Debug.Log($"{target.self.name}: {target.self.currentHealth}/{target.self.maxHealth}");                                    
     }

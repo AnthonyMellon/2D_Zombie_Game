@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4677760025093688487}
   - component: {fileID: 8088602293351448688}
   - component: {fileID: 1028534806077614960}
+  - component: {fileID: -2614653095573354566}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Zombie
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 4677760025093688485}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 977598183664738025}
@@ -53,6 +54,7 @@ MonoBehaviour:
   showPath: 0
   numStepsBeforePathUpdate: 3
   manager: {fileID: 0}
+  anim: {fileID: -2614653095573354566}
   player: {fileID: 11400000, guid: 6c1d858dc80120d4b8699a5cc274b421, type: 2}
   playerMoney: {fileID: 11400000, guid: 04ed94f467958f3428d5a02502fb9cbf, type: 2}
 --- !u!212 &8088602293351448688
@@ -96,7 +98,7 @@ SpriteRenderer:
   m_SortingLayerID: -735164407
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: aea5a674b295ff14f8982b0fea2d1db5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -120,19 +122,39 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.25}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 4.3, y: 5.19}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2, y: 4}
   m_EdgeRadius: 0
+--- !u!95 &-2614653095573354566
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4677760025093688485}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d9ac62b926363e340a7e9a23a5b4e2da, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &6187416813501686825
 PrefabInstance:
   m_ObjectHideFlags: 0
