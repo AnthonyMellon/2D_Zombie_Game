@@ -65,8 +65,8 @@ public class Player : Entity
         if(Mathf.Abs(horizontalMovement) > 0 || Mathf.Abs(verticalMovement) > 0) anim.SetBool("Walking", true);
         else anim.SetBool("Walking", false);
 
-        if (horizontalMovement > 0) transform.localScale = new Vector3(8, 8, 1);
-        else if (horizontalMovement < 0) transform.localScale = new Vector3(-8, 8, 1);
+/*        if (horizontalMovement > 0) transform.localScale = new Vector3(8, 8, 1);
+        else if (horizontalMovement < 0) transform.localScale = new Vector3(-8, 8, 1);*/
     }
 
     private void weaponInput()
@@ -74,7 +74,9 @@ public class Player : Entity
         if (Mathf.Abs(joystickAim.Horizontal) > aimDeadZone || Mathf.Abs(joystickAim.Vertical) > aimDeadZone)
         {
             if(weaponManager.shoot(joystickAim.Horizontal, joystickAim.Vertical)) anim.SetTrigger("Attack");
-            
+            if (joystickAim.Horizontal > 0) transform.localScale = new Vector3(8, 8, 1);
+            else transform.localScale = new Vector3(-8, 8, 1);
+
         }
 
         //Manual reload

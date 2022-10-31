@@ -41,6 +41,7 @@ public class Zombie : Entity
             Move();
 
             Vector2 shootDir = (player.position - self.position);
+            Debug.Log("Shooting");
             if (weaponManager.shoot(shootDir.x, shootDir.y)) anim.SetTrigger("Attack");
         }
                    
@@ -118,7 +119,6 @@ public class Zombie : Entity
     {
         base.Damage(damageValue);
         playerMoney.value += damageValue;
-        Debug.Log($"player money is now at ${playerMoney.value}");
         StartCoroutine(DamageAnim());
     }
 

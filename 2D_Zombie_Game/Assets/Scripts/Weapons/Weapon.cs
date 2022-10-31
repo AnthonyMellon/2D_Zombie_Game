@@ -6,6 +6,7 @@ public class Weapon : MonoBehaviour
 {
     public Weapon_SO currentWeapon;
     public List<Entity_SO> hitBlackList;
+    [SerializeField]private string myLayer;
 
     public floatSO ammoInMagExt;
     public floatSO magSizeExt;
@@ -13,6 +14,7 @@ public class Weapon : MonoBehaviour
     [Header("BulletTrail")]
     public GameObject trailObject;
     public float trailLifeTime;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -52,22 +54,16 @@ public class Weapon : MonoBehaviour
         StartCoroutine(cycleRound());
 
         //Trail
-        GameObject trail = Instantiate(trailObject, transform.parent);
+        GameObject trail = Instantiate(trailObject, transform);
         LineRenderer trailLine = trail.GetComponent<LineRenderer>();
         trailLine.positionCount = 2;
-        trailLine.SetPosition(0, transform.parent.position);
+        trailLine.SetPosition(0, transform.position);
         trailLine.SetPosition(1, shotEnd);
         Destroy(trail, trailLifeTime);
 
-        //Raycast
-        List<RaycastHit2D> hits = new List<RaycastHit2D>(Physics2D.RaycastAll(transform.parent.position, new Vector2(horiz, vert), currentWeapon.range));
-        if (hits.Count <= 0) return true; //Ensure something was actually hit
-                                     
-        Entity target = FindValidTarget(hits);
-        if(hits.Count > 2) trailLine.SetPosition(1, hits[1].point);      
-        if (target == null) return true; //Ensure there was a valid target hit        
-        
-        target.Damage(currentWeapon.damage);
+        //Raycast        
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(horiz, vert), currentWeapon.range, ~(LayerMask.GetMask(myLayer)));
+        if (hit && hit.transform.TryGetComponent(out Entity hitEntity)) hitEntity.Damage(currentWeapon.damage);
 
         return true;
 
@@ -79,7 +75,6 @@ public class Weapon : MonoBehaviour
         foreach(RaycastHit2D candidate in candidates)
         {
             if (candidate.transform == null) continue; //Ensure the target has a transform
-            if (candidate.transform == transform.parent) continue; //Ensure candidate isnt the parent
             if (!candidate.transform.TryGetComponent(out Entity candidateEntity)) continue; //Ensure the candidate is an entity
             foreach(Entity_SO blackListHit in hitBlackList)
             {

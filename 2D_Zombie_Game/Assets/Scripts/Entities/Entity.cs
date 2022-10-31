@@ -11,7 +11,7 @@ public class Entity : MonoBehaviour
     protected void onStart()
     {
         self.Setup();
-        weaponManager = transform.Find("weaponManager").GetComponent<Weapon>();
+        weaponManager = transform.GetComponent<Weapon>();
         swapWeapon(self.weaponsInv[0]);
     }
 

@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 8088602293351448688}
   - component: {fileID: 1028534806077614960}
   - component: {fileID: -2614653095573354566}
-  m_Layer: 0
+  - component: {fileID: 8669575116536603966}
+  m_Layer: 7
   m_Name: Zombie
   m_TagString: Zombie
   m_Icon: {fileID: 0}
@@ -31,8 +32,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 977598183664738025}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -155,77 +155,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!1001 &6187416813501686825
-PrefabInstance:
+--- !u!114 &8669575116536603966
+MonoBehaviour:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 4677760025093688486}
-    m_Modifications:
-    - target: {fileID: 69474497333568983, guid: 7736199f95d227d4ba2cc374cbbd97c6, type: 3}
-      propertyPath: m_Name
-      value: weaponManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 4129267193896994485, guid: 7736199f95d227d4ba2cc374cbbd97c6, type: 3}
-      propertyPath: currentWeapon
-      value: 
-      objectReference: {fileID: 11400000, guid: 8de27810cb4d7814a9a3697dafc806cd, type: 2}
-    - target: {fileID: 4129267193896994485, guid: 7736199f95d227d4ba2cc374cbbd97c6, type: 3}
-      propertyPath: hitBlackList.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4129267193896994485, guid: 7736199f95d227d4ba2cc374cbbd97c6, type: 3}
-      propertyPath: hitBlackList.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 05a2a0a332172b443a1aa6cd88d8d5d1, type: 2}
-    - target: {fileID: 6363373592740854464, guid: 7736199f95d227d4ba2cc374cbbd97c6, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6363373592740854464, guid: 7736199f95d227d4ba2cc374cbbd97c6, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6363373592740854464, guid: 7736199f95d227d4ba2cc374cbbd97c6, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6363373592740854464, guid: 7736199f95d227d4ba2cc374cbbd97c6, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6363373592740854464, guid: 7736199f95d227d4ba2cc374cbbd97c6, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6363373592740854464, guid: 7736199f95d227d4ba2cc374cbbd97c6, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6363373592740854464, guid: 7736199f95d227d4ba2cc374cbbd97c6, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6363373592740854464, guid: 7736199f95d227d4ba2cc374cbbd97c6, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6363373592740854464, guid: 7736199f95d227d4ba2cc374cbbd97c6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6363373592740854464, guid: 7736199f95d227d4ba2cc374cbbd97c6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6363373592740854464, guid: 7736199f95d227d4ba2cc374cbbd97c6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 7736199f95d227d4ba2cc374cbbd97c6, type: 3}
---- !u!4 &977598183664738025 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6363373592740854464, guid: 7736199f95d227d4ba2cc374cbbd97c6, type: 3}
-  m_PrefabInstance: {fileID: 6187416813501686825}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4677760025093688485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 522e3b3371c36444ba9f3c8ef7307392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWeapon: {fileID: 11400000, guid: 8de27810cb4d7814a9a3697dafc806cd, type: 2}
+  hitBlackList:
+  - {fileID: 11400000, guid: 05a2a0a332172b443a1aa6cd88d8d5d1, type: 2}
+  myLayer: Zombie
+  ammoInMagExt: {fileID: 0}
+  magSizeExt: {fileID: 0}
+  trailObject: {fileID: 329676029631789691, guid: 791c4cb7cc17dea4f9b39bd29397ef12, type: 3}
+  trailLifeTime: 0.1

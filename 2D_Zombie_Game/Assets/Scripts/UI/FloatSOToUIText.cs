@@ -5,6 +5,8 @@ using TMPro;
 
 public class FloatSOToUIText : MonoBehaviour
 {
+    [SerializeField] private string prefix; 
+    [SerializeField] private string suffix; 
     public floatSO refValue;
     public TMP_Text text;
     [SerializeField] private bool alwaysUpdate;
@@ -16,6 +18,6 @@ public class FloatSOToUIText : MonoBehaviour
 
     public void UpdateText()
     {
-        text.text = refValue.value.ToString();
+        text.text = prefix + refValue.value.ToString() + suffix;
     }
 }
