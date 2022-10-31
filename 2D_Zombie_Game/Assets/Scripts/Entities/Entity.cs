@@ -6,13 +6,15 @@ public class Entity : MonoBehaviour
 {    
     public Entity_SO self;
 
-    protected Weapon weaponManager;
+    public Weapon weaponManager;
+
+    [Header("Sounds")]
+    public AudioSource swapSound;
 
     protected void onStart()
     {
         self.Setup();
-        weaponManager = transform.GetComponent<Weapon>();
-        swapWeapon(self.weaponsInv[0]);
+        swapWeapon(self.weaponsInv[0], false);
     }
 
     protected void onUpdate()
@@ -31,8 +33,9 @@ public class Entity : MonoBehaviour
 
     }
 
-    public void swapWeapon(Weapon_SO newWeapon)
+    public void swapWeapon(Weapon_SO newWeapon, bool playSound)
     {
+        if (playSound) swapSound.Play();
         self.currentWeapon = newWeapon;
         self.currentWeapon.Setup();
         weaponManager.currentWeapon = self.currentWeapon;

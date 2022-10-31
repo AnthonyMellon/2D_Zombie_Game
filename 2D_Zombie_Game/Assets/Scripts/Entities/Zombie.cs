@@ -41,8 +41,12 @@ public class Zombie : Entity
             Move();
 
             Vector2 shootDir = (player.position - self.position);
-            Debug.Log("Shooting");
-            if (weaponManager.shoot(shootDir.x, shootDir.y)) anim.SetTrigger("Attack");
+
+            if (weaponManager.shoot(shootDir.x, shootDir.y))
+            {
+                Debug.Log($"Shooting on frame {Time.frameCount}");
+                anim.SetTrigger("Attack");
+            }
         }
                    
     }

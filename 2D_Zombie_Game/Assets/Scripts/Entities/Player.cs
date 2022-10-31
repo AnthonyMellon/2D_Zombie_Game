@@ -25,7 +25,10 @@ public class Player : Entity
 
     [Header("Animation")]
     public Animator anim;
-    
+
+    [Header("Sounds")]
+    public AudioSource walkSound;
+
     private float horizontalMovement = 0f;
     private float verticalMovement = 0f;
 
@@ -62,8 +65,16 @@ public class Player : Entity
         horizontalMovement = joystickMovement.Horizontal * self.moveSpeed;
         verticalMovement = joystickMovement.Vertical * self.moveSpeed;
 
-        if(Mathf.Abs(horizontalMovement) > 0 || Mathf.Abs(verticalMovement) > 0) anim.SetBool("Walking", true);
-        else anim.SetBool("Walking", false);
+        if (Mathf.Abs(horizontalMovement) > 0 || Mathf.Abs(verticalMovement) > 0)
+        {
+            walkSound.mute = false;
+            anim.SetBool("Walking", true);
+        }
+        else
+        {
+            walkSound.mute = true;
+            anim.SetBool("Walking", false);
+        }
 
 /*        if (horizontalMovement > 0) transform.localScale = new Vector3(8, 8, 1);
         else if (horizontalMovement < 0) transform.localScale = new Vector3(-8, 8, 1);*/
@@ -91,15 +102,15 @@ public class Player : Entity
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            swapWeapon(self.weaponsInv[0]);
+            swapWeapon(self.weaponsInv[0], true);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            swapWeapon(self.weaponsInv[1]);
+            swapWeapon(self.weaponsInv[1], true);
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            swapWeapon(self.weaponsInv[2]);
+            swapWeapon(self.weaponsInv[2], true);
         }
     }    
 

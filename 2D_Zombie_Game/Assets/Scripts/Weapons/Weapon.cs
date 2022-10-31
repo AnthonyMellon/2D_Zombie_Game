@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    public bool sharedWeapon;
+
     public Weapon_SO currentWeapon;
     public List<Entity_SO> hitBlackList;
     [SerializeField]private string myLayer;
@@ -14,11 +16,15 @@ public class Weapon : MonoBehaviour
     [Header("BulletTrail")]
     public GameObject trailObject;
     public float trailLifeTime;
-    
+
+    [Header("Sounds")]
+    public AudioSource shootSound;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        if(sharedWeapon) currentWeapon = Instantiate(currentWeapon);
         currentWeapon.Setup();
     }
 
@@ -51,6 +57,7 @@ public class Weapon : MonoBehaviour
         if (currentWeapon.reloading) return false; //Ensure the weapon isnt currently reloading
 
         //Shot fired//
+        shootSound.Play();
         StartCoroutine(cycleRound());
 
         //Trail
